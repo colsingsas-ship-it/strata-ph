@@ -40,6 +40,20 @@
     }
   }
 
+  /* ── HEADER MÓVIL SCROLL ────────────────────── */
+  const mobileHeader = document.getElementById('siteHeaderMobile');
+  if (mobileHeader) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 5) {
+        mobileHeader.classList.add('is-scrolled');
+        mobileHeader.classList.remove('is-hero');
+      } else {
+        mobileHeader.classList.remove('is-scrolled');
+        mobileHeader.classList.add('is-hero');
+      }
+    }, { passive: true });
+  }
+
   /* ── HAMBURGUESA ─────────────────────────────── */
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
