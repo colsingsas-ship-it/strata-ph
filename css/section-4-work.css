@@ -1,0 +1,152 @@
+.work-section {
+  position: relative;
+  background: var(--white);
+  color: var(--black);
+  padding: var(--section-padding-y-lg) 0;
+  overflow: hidden;
+}
+
+.work-header {
+  position: relative;
+  text-align: center;
+}
+
+.work-header h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+  font-weight: 900;
+  margin-bottom: var(--space-title);
+}
+
+.work-header p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.work-controls {
+  position: absolute;
+  right: 0;
+  bottom: -92px;
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+
+.work-btn {
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--black);
+  color: var(--white);
+
+  font-size: 20px;
+  font-weight: 900;
+
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.work-btn:hover {
+  transform: translateY(-3px);
+}
+
+.work-next {
+  background: var(--accent);
+  color: var(--black);
+}
+
+/* SLIDER FULL WIDTH */
+.work-slider {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 110px;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  padding-left: max(var(--page-padding), calc((100vw - var(--container)) / 2));
+  padding-right: var(--page-padding);
+}
+
+.work-track {
+  display: flex;
+  gap: 32px;
+
+  transition: transform 0.75s cubic-bezier(.19, 1, .22, 1);
+  will-change: transform;
+}
+
+.work-card {
+  flex: 0 0 clamp(320px, 28vw, 440px);
+}
+
+.work-card img {
+  width: 100%;
+  height: clamp(260px, 24vw, 360px);
+
+  object-fit: cover;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.work-card h3 {
+  margin-top: 24px;
+
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+}
+
+.work-card p {
+  margin-top: 8px;
+
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .work-controls {
+    position: relative;
+    right: auto;
+    bottom: auto;
+
+    justify-content: center;
+    margin-top: 42px;
+  }
+
+  .work-card {
+    flex-basis: clamp(300px, 42vw, 420px);
+  }
+}
+
+@media (max-width: 760px) {
+  .work-section {
+    padding: 100px 0;
+  }
+
+  .work-slider {
+    margin-top: 72px;
+  }
+
+  .work-card {
+    flex-basis: min(82vw, 360px);
+  }
+
+  .work-card img {
+    height: clamp(260px, 70vw, 420px);
+  }
+}

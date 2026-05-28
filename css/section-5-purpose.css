@@ -1,0 +1,177 @@
+/* =========================
+   SECCIÓN 5 / PROPÓSITO
+========================= */
+
+.purpose-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* La altura la define el contenido derecho,
+     la imagen se estira para igualarla */
+  align-items: stretch;
+
+  background: var(--black);
+  color: var(--white);
+}
+
+/* =========================
+   IMAGEN IZQUIERDA
+   Se estira hasta igualar la altura del contenido
+========================= */
+
+.purpose-image {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  /* Sin min-height fijo — sigue la altura del grid */
+  min-height: 420px;
+}
+
+.purpose-image > img:first-child {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.purpose-mark {
+  position: absolute;
+  left: clamp(28px, 4vw, 64px);
+  bottom: clamp(28px, 4vw, 58px);
+  width: clamp(44px, 4vw, 70px);
+  height: auto;
+  z-index: 2;
+}
+
+/* =========================
+   CONTENIDO DERECHO
+   Padding generoso pero contenido
+========================= */
+
+.purpose-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(36px, 4vw, 56px) clamp(32px, 5vw, 72px);
+}
+
+.purpose-content h2 {
+  font-size: clamp(30px, 3.5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+  font-weight: 900;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.purpose-content > p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+/* =========================
+   VIÑETAS
+========================= */
+
+.purpose-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 28px;
+}
+
+.purpose-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.purpose-item span {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.purpose-item p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+[data-theme="dark"] .purpose-section    { background: #0d0d0d; }
+[data-theme="dark"] .purpose-image      { background: #111; }
+[data-theme="dark"] .purpose-content h2 { color: #f0f0f0; }
+[data-theme="dark"] .purpose-content > p{ color: rgba(240,240,240,0.65); }
+[data-theme="dark"] .purpose-item p     { color: rgba(240,240,240,0.7); }
+[data-theme="dark"] .purpose-item span  { background: var(--accent); color: #0d0d0d; }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablet ≤1024px: columna única, imagen arriba */
+@media (max-width: 1024px) {
+  .purpose-section {
+    grid-template-columns: 1fr;
+  }
+
+  .purpose-image {
+    height: clamp(280px, 45vw, 460px);
+    min-height: unset;
+  }
+
+  .purpose-content {
+    padding: clamp(36px, 5vw, 56px) var(--page-padding);
+  }
+
+  .purpose-list {
+    max-width: 560px;
+  }
+}
+
+/* Móvil ≤760px */
+@media (max-width: 760px) {
+  .purpose-image {
+    height: 260px;
+  }
+
+  .purpose-content {
+    padding: 36px var(--page-padding);
+  }
+
+  .purpose-content h2 {
+    font-size: clamp(26px, 7.5vw, 40px);
+  }
+
+  .purpose-content > p {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .purpose-list {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .purpose-item span {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+}

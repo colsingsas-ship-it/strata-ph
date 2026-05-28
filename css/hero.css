@@ -1,0 +1,101 @@
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--header-height) var(--page-padding) 80px;
+
+  overflow: hidden;
+}
+
+/* FONDO
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9)),
+    url("../assets/img/hero/hero-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}*/
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Overlay encima del video */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.40),
+    rgba(255, 255, 255, 0.0)
+  );
+  pointer-events: none;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* CONTENIDO */
+.hero-content {
+  width: min(100%, var(--container));
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+/* TEXTO SUPERIOR */
+.hero-eyebrow {
+  margin-bottom: 44px;
+
+  font-size: clamp(12px, 1.2vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* TITULO */
+.hero-content h1 {
+  font-size: clamp(48px, 7vw, 112px);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+}
+
+/* BOTON */
+.hero-content .btn-primary {
+  margin-top: 72px;
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+
+  .hero-content h1 {
+    font-size: clamp(42px, 14vw, 68px);
+  }
+
+  .hero-content .btn-primary {
+    margin-top: 48px;
+  }
+
+}

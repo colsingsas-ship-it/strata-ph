@@ -1,0 +1,186 @@
+/* =========================
+   SECCIÓN 3 / SERVICES
+   Derecha: scroll natural
+   Izquierda: se mueve lentamente controlada por JS
+========================= */
+
+.services-pin-section {
+  position: relative;
+  background: var(--white);
+  color: var(--black);
+  padding: var(--section-padding-y-lg) 0;
+}
+
+.services-pin-layout {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: clamp(70px, 9vw, 130px);
+  align-items: start;
+  position: relative;
+}
+
+/* =========================
+   COLUMNA IZQUIERDA
+   JS controla su posición: empieza arriba de la sección
+   y baja lentamente sin salirse nunca de ella.
+========================= */
+
+.services-pin-left {
+  position: relative; /* JS cambia a absolute cuando conviene */
+  max-width: 540px;
+  will-change: transform;
+}
+
+.services-pin-left h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+  font-weight: 900;
+  margin-bottom: var(--space-title);
+}
+
+.services-pin-left p {
+  max-width: 560px;
+  margin-bottom: var(--space-copy);
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* =========================
+   COLUMNA DERECHA — scroll natural
+========================= */
+
+.services-pin-right {
+  width: 100%;
+}
+
+.services-pin-track {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(60px, 7vw, 100px);
+  padding-bottom: clamp(60px, 8vh, 120px);
+}
+
+/* =========================
+   TARJETA DE SERVICIO
+========================= */
+
+.services-pin-card {
+  position: relative;
+}
+
+.services-pin-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #ddd;
+  display: block;
+}
+
+.services-pin-content {
+  position: relative;
+  margin-top: 30px;
+  padding-left: 44px;
+}
+
+.services-pin-number {
+  position: absolute;
+  left: 0;
+  top: -22px;
+  font-family: var(--font-number);
+  font-size: clamp(56px, 5vw, 82px);
+  line-height: 1;
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.services-pin-content h3 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(26px, 2.6vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.services-pin-content p {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* =========================
+   RESPONSIVE — sin efecto en móvil
+========================= */
+
+@media (max-width: 1024px) {
+  .services-pin-layout {
+    grid-template-columns: 1fr;
+    gap: 54px;
+  }
+
+  .services-pin-left {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: 100%;
+  }
+
+  .services-pin-track {
+    padding-bottom: 0;
+    gap: 80px;
+  }
+}
+
+@media (max-width: 760px) {
+  .services-pin-section {
+    padding: 100px 0;
+  }
+
+  .services-pin-track {
+    gap: 64px;
+  }
+
+  .services-pin-content {
+    padding-left: 24px;
+  }
+
+  .services-pin-number {
+    top: -14px;
+  }
+}
+
+/* =========================
+   DARK MODE — Sección 3 Servicios
+========================= */
+
+/* Números grandes: verde accent */
+[data-theme="dark"] .services-pin-number {
+  color: transparent;
+  font-family: var(--font-number);
+  -webkit-text-stroke: 1px rgba(180, 180, 180, 0.35);
+}
+
+[data-theme="dark"] .services-pin-content h3 {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .services-pin-content p {
+  color: rgba(255,255,255,0.6);
+}
+
+[data-theme="dark"] .services-pin-left h2 {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .services-pin-left p {
+  color: rgba(255,255,255,0.6);
+}
