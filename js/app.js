@@ -6,8 +6,6 @@
 /* ── Ruta base de assets ── */
 const ASSETS = '/assets';   /* ← cambiar si el dominio tiene subcarpeta */
 
-document.documentElement.classList.add('js');
-
 /* ══════════════════════════════════════════════════
    1. NAVBAR SCROLL
 ══════════════════════════════════════════════════ */
@@ -65,14 +63,14 @@ function observe(selector, threshold, rootMargin) {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
     });
-  }, { threshold: threshold || 0.12, rootMargin: rootMargin || '0px 0px -5% 0px' });
+  }, { threshold: threshold || 0.12, rootMargin: rootMargin || '0px' });
   els.forEach(el => obs.observe(el));
 }
 
-observe('.reveal-zoom',         { threshold: 0.25 });
-observe('.reveal-up',           { threshold: 0.18 });
-observe('.reveal-left',         { threshold: 0.18 });
-observe('.why-item',            { threshold: 0.22 });
+observe('.reveal-zoom',  0.25);
+observe('.reveal-up',   0.18);
+observe('.reveal-left', 0.18);
+observe('.why-item',    0.22);
 observe('.reveal-service',      0.06);
 observe('.reveal-curtain-left', 0.05);
 observe('.reveal-fade-up',      0.10);
