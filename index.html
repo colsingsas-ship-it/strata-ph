@@ -99,35 +99,6 @@
   }
   </script>
 
-  <!-- ── Alineación header móvil ── -->
-  <style>
-    @media (max-width: 1024px) {
-      .site-header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        grid-template-columns: unset !important;
-      }
-      .main-nav    { display: none !important; }
-      .social-links { display: none !important; }
-      .header-right {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 8px !important;
-        margin-left: auto !important;
-        justify-self: unset !important;
-      }
-      .logo {
-        flex-shrink: 0 !important;
-        justify-self: unset !important;
-      }
-      .lang-flag span { display: none !important; }
-      .lang-caret     { display: none !important; }
-      .lang-current   { padding: 5px 8px !important; }
-    }
-  </style>
 </head>
 
 <body>
@@ -1903,5 +1874,27 @@
 })();
 </script>
 
+
+<style id="header-mobile-fix">
+@media (max-width: 1024px) {
+  .site-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    grid-template-columns: none !important;
+  }
+  .main-nav, .social-links { display: none !important; }
+  .logo { flex: 0 0 auto !important; }
+  .header-right {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .lang-flag span, .lang-caret { display: none !important; }
+  .lang-current { padding: 5px 8px !important; }
+}
+</style>
 </body>
 </html>
