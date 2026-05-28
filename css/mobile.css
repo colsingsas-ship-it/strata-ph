@@ -229,29 +229,33 @@
   /* Activar menú móvil */
   .mobile-nav { display: flex; }
 
-  /* Header: colapsar a 2 columnas — logo izq | header-right der */
+  /* Header: flexbox en móvil — más predecible que grid
+     logo queda a la izquierda, header-right a la derecha */
   .site-header {
-    grid-template-columns: 1fr auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
 
-  /* Nav central desaparece del grid */
-  .main-nav { display: none; }
+  /* Nav central oculta — ya definida en header.css */
+  .main-nav,
+  .social-links { display: none !important; }
 
-  /* header-right: lang + hamburguesa pegados a la derecha */
+  /* header-right: fila con bandera + hamburguesa, todo a la derecha */
   .header-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-self: end;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
   }
 
   /* Solo bandera — sin texto ES/EN ni caret */
   .lang-flag span,
-  .lang-caret { display: none; }
+  .lang-caret { display: none !important; }
 
   .lang-current {
-    padding: 5px 8px;
-    gap: 4px;
+    padding: 5px 8px !important;
+    gap: 4px !important;
   }
 }
 
