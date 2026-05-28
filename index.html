@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════════
+       TÍTULO DEL SITIO — STRATA PH
+  ═══════════════════════════════════════════════ -->
   <title>STRATA PH | Administración Profesional de Propiedad Horizontal</title>
 
   <!-- SEO -->
@@ -10,7 +14,7 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.strataph.com/" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://www.strataph.com/" />
   <meta property="og:title"       content="STRATA PH | Administración Profesional de Propiedad Horizontal" />
@@ -24,44 +28,42 @@
   <meta name="twitter:description" content="Terminamos con la administración opaca. Reportes claros, atención 24/7 y valorización real de su copropiedad." />
   <meta name="twitter:image"       content="https://www.strataph.com/assets/img/og-image.jpg" />
 
-  <meta name="theme-color" content="#050505" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
-
-  <!-- Fuente -->
+  <!-- Color de barra del navegador en móvil -->
+  <meta name="theme-color" content="#050505" media="(prefers-color-scheme: light)" />
+  <!-- Preconexión Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- JS class: evita FOUC en animaciones CSS -->
-  <script>document.documentElement.classList.add('js');</script>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+    
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/section-2-about.css" />
+  <link rel="stylesheet" href="css/section-2-1-team.css" />
+  <link rel="stylesheet" href="css/section-2-2-stats.css" />
+  <link rel="stylesheet" href="css/section-3-pin-services.css" />
+  <link rel="stylesheet" href="css/section-3-1-why.css" />
+  <link rel="stylesheet" href="css/section-4-work.css" />
+  <link rel="stylesheet" href="css/section-5-purpose.css" />
+  <link rel="stylesheet" href="css/section-6-contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/header.css" />
-  <link rel="stylesheet" href="/css/hero.css" />
-  <link rel="stylesheet" href="/css/section-2-about.css" />
-  <link rel="stylesheet" href="/css/section-2-1-team.css" />
-  <link rel="stylesheet" href="/css/section-2-2-stats.css" />
-  <link rel="stylesheet" href="/css/section-3-pin-services.css" />
-  <link rel="stylesheet" href="/css/section-3-1-why.css" />
-  <link rel="stylesheet" href="/css/section-4-work.css" />
-  <link rel="stylesheet" href="/css/section-5-purpose.css" />
-  <link rel="stylesheet" href="/css/section-6-contact.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="stylesheet" href="/css/animations.css" />
-  <link rel="stylesheet" href="/css/mobile.css" />
-
-  <!-- Schema JSON-LD -->
+  <!-- JSON-LD: negocio local para Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "STRATA PH",
-    "description": "Administración profesional de edificios y conjuntos residenciales en Colombia.",
+    "description": "Administración profesional de edificios y conjuntos residenciales en Colombia. Gestión financiera, mantenimiento supervisado, convivencia y atención 24/7.",
     "url": "https://www.strataph.com",
+    "logo": "https://www.strataph.com/assets/img/logo/logo-header.svg",
+    "image": "https://www.strataph.com/assets/img/og-image.jpg",
     "telephone": "+57-000-000-0000",
     "email": "contacto@suempresa.com",
     "address": {
@@ -72,11 +74,21 @@
       "postalCode": "110000",
       "addressCountry": "CO"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 4.7110,
+      "longitude": -74.0721
+    },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
       "opens": "00:00",
       "closes": "23:59"
+    },
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Colombia"
     },
     "sameAs": [
       "https://www.instagram.com/strataph",
@@ -89,15 +101,34 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- ═══════════════════════════════════════════════
+     HEADER / NAVBAR
+     ─────────────────────────────────────────────
+     LOGO:
+     · Opción A (activa): texto "STRATA PH"
+     · Opción B: imagen → descomenta el <img>
+       y comenta los dos <span> de arriba
+       Ruta sugerida: assets/img/logo/logo-header.svg
+═══════════════════════════════════════════════ -->
 <header class="site-header is-hero" id="siteHeader">
-
+  <!--
+    ╔══════════════════════════════════════════════╗
+    ║  LOGO — EDITAR AQUÍ                          ║
+    ║  Opción A (activa): marca geométrica CSS     ║
+    ║    · Cambia el texto editando el <span>      ║
+    ║  Opción B: imagen propia                     ║
+    ║    · Descomenta el <img> y comenta el resto  ║
+    ║    · Ruta: assets/img/logo/logo-header.svg   ║
+    ╚══════════════════════════════════════════════╝
+  -->
   <a href="#home" class="logo">
+    <!-- OPCIÓN A — marca geométrica CSS (activa) -->
     <span class="logo-mark"></span>
     <span>STRATA PH</span>
+    <!-- OPCIÓN B — imagen
+    <img src="assets/img/logo/logo-header.svg" alt="STRATA PH" class="logo-img" /> -->
   </a>
 
-  <!-- Nav desktop -->
   <nav class="main-nav" aria-label="Navegación principal">
     <a href="#home">Inicio</a>
     <a href="#about">Quiénes Somos</a>
@@ -109,9 +140,19 @@
 
   <div class="header-right">
 
-    <!-- Selector de idioma -->
+    <!-- Hamburguesa visible solo en móvil -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- ── SELECTOR DE IDIOMA ─────────────────────── -->
     <div class="lang-switcher" id="langSwitcher" aria-label="Selector de idioma">
+
+      <!-- Bandera activa visible siempre -->
       <button class="lang-current" id="langCurrent" aria-haspopup="true" aria-expanded="false">
+        <!-- Bandera Colombia (activa por defecto) -->
         <span class="lang-flag" data-lang="es">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" aria-hidden="true">
             <rect width="60" height="40" fill="#FCD116"/>
@@ -120,6 +161,7 @@
           </svg>
           <span>ES</span>
         </span>
+        <!-- Bandera USA (oculta por defecto) -->
         <span class="lang-flag" data-lang="en" style="display:none">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" aria-hidden="true">
             <rect width="60" height="40" fill="#B22234"/>
@@ -137,6 +179,8 @@
           <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
         </svg>
       </button>
+
+      <!-- Dropdown con las dos opciones -->
       <ul class="lang-dropdown" id="langDropdown" role="listbox">
         <li>
           <button class="lang-option is-active" data-lang="es" role="option" aria-selected="true">
@@ -165,9 +209,10 @@
         </li>
       </ul>
     </div>
+    <!-- ── FIN SELECTOR ───────────────────────────── -->
 
-    <!-- Social (desktop) -->
     <div class="social-links">
+      <!-- Editar href con URLs reales -->
       <a href="https://www.instagram.com/strataph" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       </a>
@@ -175,28 +220,21 @@
         <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
       <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.962-1.418A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.962-1.418A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 0 1-4.031-1.098l-.29-.172-2.948.843.856-2.87-.189-.295A7.96 7.96 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
       </a>
     </div>
-
-    <!-- Hamburguesa (móvil) — siempre al final = derecha -->
-    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="mobileNav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
 
   </div>
 </header>
 
-<!-- MENÚ MÓVIL -->
+<!-- MENÚ MÓVIL FULLSCREEN -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Menú de navegación">
-  <a href="#home"       data-nav>Inicio</a>
-  <a href="#about"      data-nav>Quiénes Somos</a>
-  <a href="#section-3"  data-nav>Servicios</a>
-  <a href="#section-4"  data-nav>Casos de Éxito</a>
-  <a href="#contacts"   data-nav>Contacto</a>
-  <a href="#"           data-nav>Blog</a>
+  <a href="#home">Inicio</a>
+  <a href="#about">Quiénes Somos</a>
+  <a href="#section-3">Servicios</a>
+  <a href="#section-4">Casos de Éxito</a>
+  <a href="#contacts">Contacto</a>
+  <a href="#">Blog</a>
   <div class="mobile-nav-social">
     <a href="https://www.instagram.com/strataph" target="_blank" rel="noopener" aria-label="Instagram">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -211,6 +249,7 @@
 </nav>
 
 <main>
+
 <!-- ═══════════════════════════════════════════════
      SECCIÓN 1 / HERO
      Imagen fondo: assets/img/hero/hero-bg.jpg
@@ -226,8 +265,8 @@
     playsinline
     preload="none"
     poster="assets/img/hero/hero-bg.jpg">
-    <source src="/assets/video/hero-bg.webm" type="video/webm" />
-    <source src="/assets/video/hero-bg.mp4"  type="video/mp4"  />
+    <source src="assets/video/hero-bg.webm" type="video/webm" />
+    <source src="assets/video/hero-bg.mp4"  type="video/mp4"  />
   </video>
 </div>
 
@@ -242,7 +281,7 @@
     <!-- BOTÓN HERO — micro-copy de conversión -->
     <a href="#contacts" class="btn-primary">
       Solicitar Auditoría de Gestión
-      <img src="/assets/img/icons/icon-arrow-button.svg" alt="" />
+      <img src="assets/img/icons/icon-arrow-button.svg" alt="" />
     </a>
   </div>
 </section>
@@ -258,7 +297,7 @@
     <div class="about-top">
       <article class="feature">
         <div class="feature-icon">
-          <img loading="lazy" src="/assets/img/icons/icon-innovation.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-innovation.svg" alt="" />
         </div>
         <h4>Gestión Transparente</h4>
         <p>Cada peso ingresado y cada gasto ejecutado, documentado y disponible para el Consejo en tiempo real. Sin sorpresas, sin letra pequeña.</p>
@@ -266,7 +305,7 @@
 
       <article class="feature">
         <div class="feature-icon">
-          <img loading="lazy" src="/assets/img/icons/icon-storytelling.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-storytelling.svg" alt="" />
         </div>
         <h4>Respuesta 24 / 7</h4>
         <p>Emergencias atendidas a cualquier hora. Porque los problemas de un edificio no esperan al siguiente día hábil.</p>
@@ -274,7 +313,7 @@
 
       <article class="feature">
         <div class="feature-icon">
-          <img loading="lazy" src="/assets/img/icons/icon-vision.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-vision.svg" alt="" />
         </div>
         <h4>Patrimonio Valorizado</h4>
         <p>Una administración rigurosa no solo sostiene su copropiedad — la valoriza. Esa es nuestra única métrica de éxito.</p>
@@ -284,7 +323,7 @@
     <!-- BLOQUE PRINCIPAL -->
     <div class="about-main">
       <div class="about-image reveal-zoom">
-        <img loading="lazy" src="/assets/img/section-2/studio.jpg" alt="Equipo profesional de administración de propiedad horizontal" />
+        <img loading="lazy" src="assets/img/section-2/studio.jpg" alt="Equipo profesional de administración de propiedad horizontal" />
       </div>
 
       <div class="about-text">
@@ -301,7 +340,7 @@
         <!-- BOTÓN — editar texto del CTA -->
         <a href="#contacts" class="btn-primary">
           Pedir Propuesta Personalizada
-          <img src="/assets/img/icons/icon-arrow-button.svg" alt="" />
+          <img src="assets/img/icons/icon-arrow-button.svg" alt="" />
         </a>
       </div>
 
@@ -317,7 +356,7 @@
             </textPath>
           </text>
         </svg>
-        <img loading="lazy" class="badge-arrow-img" src="/assets/img/icons/icon-arrow-badge.svg" alt="" />
+        <img loading="lazy" class="badge-arrow-img" src="assets/img/icons/icon-arrow-badge.svg" alt="" />
       </div>
     </div>
 
@@ -367,7 +406,7 @@
 
       <a href="#contacts" class="btn-primary">
         Conocer el Equipo
-        <img src="/assets/img/icons/icon-arrow-button.svg" alt="" />
+        <img src="assets/img/icons/icon-arrow-button.svg" alt="" />
       </a>
     </div>
 
@@ -376,7 +415,7 @@
       <!-- ─── INTEGRANTE 1 ──────────────────────────
            Edita: team-name y team-role             -->
       <figure class="team-photo team-photo-1 reveal-up">
-        <img loading="lazy" src="/assets/img/section-2-1/team-01.jpg" alt="Gerente de Administración" />
+        <img loading="lazy" src="assets/img/section-2-1/team-01.jpg" alt="Gerente de Administración" />
         <figcaption class="team-overlay">
           <span class="team-name">NOMBRE APELLIDO</span>
           <span class="team-role">Gerente de Administración</span>
@@ -386,7 +425,7 @@
       <!-- ─── INTEGRANTE 2 ──────────────────────────
            Edita: team-name y team-role             -->
       <figure class="team-photo team-photo-2 reveal-up">
-        <img loading="lazy" src="/assets/img/section-2-1/team-02.jpg" alt="Coordinadora Financiera" />
+        <img loading="lazy" src="assets/img/section-2-1/team-02.jpg" alt="Coordinadora Financiera" />
         <figcaption class="team-overlay">
           <span class="team-name">NOMBRE APELLIDO</span>
           <span class="team-role">Coordinadora Financiera</span>
@@ -396,7 +435,7 @@
       <!-- ─── INTEGRANTE 3 ──────────────────────────
            Edita: team-name y team-role             -->
       <figure class="team-photo team-photo-3 reveal-up">
-        <img loading="lazy" src="/assets/img/section-2-1/team-03.jpg" alt="Supervisor Técnico" />
+        <img loading="lazy" src="assets/img/section-2-1/team-03.jpg" alt="Supervisor Técnico" />
         <figcaption class="team-overlay">
           <span class="team-name">NOMBRE APELLIDO</span>
           <span class="team-role">Supervisor Técnico</span>
@@ -406,7 +445,7 @@
       <!-- ─── INTEGRANTE 4 ──────────────────────────
            Edita: team-name y team-role             -->
       <figure class="team-photo team-photo-4 reveal-up">
-        <img loading="lazy" src="/assets/img/section-2-1/team-04.jpg" alt="Gestora de Convivencia" />
+        <img loading="lazy" src="assets/img/section-2-1/team-04.jpg" alt="Gestora de Convivencia" />
         <figcaption class="team-overlay">
           <span class="team-name">NOMBRE APELLIDO</span>
           <span class="team-role">Gestora de Convivencia</span>
@@ -478,7 +517,7 @@
 
       <a href="#contacts" class="btn-primary">
         Solicitar Auditoría de Gestión
-        <img src="/assets/img/icons/icon-arrow-button.svg" alt="" />
+        <img src="assets/img/icons/icon-arrow-button.svg" alt="" />
       </a>
     </aside>
 
@@ -488,7 +527,7 @@
 
         <!-- ─── SERVICIO 01 ──────────────────────── -->
         <article class="services-pin-card reveal-service">
-          <img loading="lazy" src="/assets/img/section-3/services-01.jpg" alt="Gestión Financiera Blindada" />
+          <img loading="lazy" src="assets/img/section-3/services-01.jpg" alt="Gestión Financiera Blindada" />
           <div class="services-pin-content">
             <span class="services-pin-number">01</span>
             <h3>Gestión Financiera Blindada</h3>
@@ -500,7 +539,7 @@
 
         <!-- ─── SERVICIO 02 ──────────────────────── -->
         <article class="services-pin-card reveal-service">
-          <img loading="lazy" src="/assets/img/section-3/services-02.jpg" alt="Mantenimiento con Supervisión Rigurosa" />
+          <img loading="lazy" src="assets/img/section-3/services-02.jpg" alt="Mantenimiento con Supervisión Rigurosa" />
           <div class="services-pin-content">
             <span class="services-pin-number">02</span>
             <h3>Mantenimiento con Supervisión Rigurosa</h3>
@@ -512,7 +551,7 @@
 
         <!-- ─── SERVICIO 03 ──────────────────────── -->
         <article class="services-pin-card reveal-service">
-          <img loading="lazy" src="/assets/img/section-3/services-03.jpg" alt="Convivencia y Resolución de Conflictos" />
+          <img loading="lazy" src="assets/img/section-3/services-03.jpg" alt="Convivencia y Resolución de Conflictos" />
           <div class="services-pin-content">
             <span class="services-pin-number">03</span>
             <h3>Convivencia y Resolución de Conflictos</h3>
@@ -524,7 +563,7 @@
 
         <!-- ─── SERVICIO 04 ──────────────────────── -->
         <article class="services-pin-card reveal-service">
-          <img loading="lazy" src="/assets/img/section-3/services-04.jpg" alt="Atención de Emergencias 24/7" />
+          <img loading="lazy" src="assets/img/section-3/services-04.jpg" alt="Atención de Emergencias 24/7" />
           <div class="services-pin-content">
             <span class="services-pin-number">04</span>
             <h3>Atención de Emergencias 24 / 7</h3>
@@ -591,7 +630,7 @@
 
   <div class="section-container why-container">
     <div class="why-image reveal-left">
-      <img loading="lazy" src="/assets/img/section-3-1/why-team.jpg" alt="Equipo profesional de administración de propiedad horizontal en Colombia" />
+      <img loading="lazy" src="assets/img/section-3-1/why-team.jpg" alt="Equipo profesional de administración de propiedad horizontal en Colombia" />
     </div>
 
     <!-- GRID 4 RAZONES — editar cada why-item -->
@@ -600,7 +639,7 @@
       <article class="why-item">
         <div class="why-icon-row">
           <span>01</span>
-          <img loading="lazy" src="/assets/img/icons/icon-unique.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-unique.svg" alt="" />
         </div>
         <h3>Transparencia<br />Total</h3>
         <div class="why-line"></div>
@@ -612,7 +651,7 @@
       <article class="why-item">
         <div class="why-icon-row">
           <span>02</span>
-          <img loading="lazy" src="/assets/img/icons/icon-quality.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-quality.svg" alt="" />
         </div>
         <h3>Sin Conflictos<br />de Interés</h3>
         <div class="why-line"></div>
@@ -624,7 +663,7 @@
       <article class="why-item">
         <div class="why-icon-row">
           <span>03</span>
-          <img loading="lazy" src="/assets/img/icons/icon-clean.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-clean.svg" alt="" />
         </div>
         <h3>Tecnología<br />Aplicada</h3>
         <div class="why-line"></div>
@@ -636,7 +675,7 @@
       <article class="why-item">
         <div class="why-icon-row">
           <span>04</span>
-          <img loading="lazy" src="/assets/img/icons/icon-support.svg" alt="" />
+          <img loading="lazy" src="assets/img/icons/icon-support.svg" alt="" />
         </div>
         <h3>Respaldo<br />Legal Permanente</h3>
         <div class="why-line"></div>
@@ -678,49 +717,49 @@
 
       <!-- Editar h3 y p de cada tarjeta -->
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-01.jpg" alt="Conjunto Residencial Norte" />
+        <img loading="lazy" src="assets/img/section-4/work-01.jpg" alt="Conjunto Residencial Norte" />
         <h3>Conjunto Residencial Norte</h3>
         <p>Recuperación de Cartera · 92% en 90 días</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-02.jpg" alt="Torre Empresarial Centro" />
+        <img loading="lazy" src="assets/img/section-4/work-02.jpg" alt="Torre Empresarial Centro" />
         <h3>Torre Empresarial Centro</h3>
         <p>Reestructuración Financiera Integral</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-03.jpg" alt="Condominio Campestre Las Palmas" />
+        <img loading="lazy" src="assets/img/section-4/work-03.jpg" alt="Condominio Campestre Las Palmas" />
         <h3>Condominio Las Palmas</h3>
         <p>Plan de Mantenimiento Preventivo</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-04.jpg" alt="Edificio Mixto San Martín" />
+        <img loading="lazy" src="assets/img/section-4/work-04.jpg" alt="Edificio Mixto San Martín" />
         <h3>Edificio Mixto San Martín</h3>
         <p>Mediación y Reglamento Interno</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-05.jpg" alt="Conjunto Familiar El Prado" />
+        <img loading="lazy" src="assets/img/section-4/work-05.jpg" alt="Conjunto Familiar El Prado" />
         <h3>Conjunto Familiar El Prado</h3>
         <p>Reducción de Costos Operativos · 28%</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-06.jpg" alt="Unidad Cerrada Los Arrayanes" />
+        <img loading="lazy" src="assets/img/section-4/work-06.jpg" alt="Unidad Cerrada Los Arrayanes" />
         <h3>Unidad Cerrada Los Arrayanes</h3>
         <p>Implementación Plataforma Digital</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-07.jpg" alt="Edificio Patrimonio" />
+        <img loading="lazy" src="assets/img/section-4/work-07.jpg" alt="Edificio Patrimonio" />
         <h3>Edificio Patrimonio</h3>
         <p>Supervisión de Obra y Restauración</p>
       </article>
 
       <article class="work-card">
-        <img loading="lazy" src="/assets/img/section-4/work-08.jpg" alt="Conjunto Premium Reserva Verde" />
+        <img loading="lazy" src="assets/img/section-4/work-08.jpg" alt="Conjunto Premium Reserva Verde" />
         <h3>Conjunto Premium Reserva Verde</h3>
         <p>Valorización Documentada · +18%</p>
       </article>
@@ -749,8 +788,8 @@
 ═══════════════════════════════════════════════ -->
 <section class="purpose-section" id="section-5">
   <div class="purpose-image reveal-curtain-left">
-    <img loading="lazy" src="/assets/img/section-5/purpose-bg.jpg" alt="Administración profesional de propiedad horizontal" />
-    <img loading="lazy" class="purpose-mark" src="/assets/img/icons/hazel-mark.svg" alt="" />
+    <img loading="lazy" src="assets/img/section-5/purpose-bg.jpg" alt="Administración profesional de propiedad horizontal" />
+    <img loading="lazy" class="purpose-mark" src="assets/img/icons/hazel-mark.svg" alt="" />
   </div>
 
   <div class="purpose-content">
@@ -884,8 +923,13 @@
 
   </div>
 </section>
+
 </main>
 
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     Editar: links de redes y texto de copyright
+═══════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="footer-inner">
 
@@ -918,15 +962,21 @@
 
     <!-- Editar nombre de empresa y año -->
     <p class="footer-copy">
-      STRATA PH · Administración Profesional de Propiedad Horizontal © 2026
+      STRATA PH · Administración Profesional de Propiedad Horizontal © 2026 | STRATA PH es una marca registrada de Colsing SAS · www.colsing.com
     </p>
 
   </div>
 </footer>
 
-<!-- BOTONES FLOTANTES -->
+<!-- ═══════════════════════════════════════════════
+     BOTÓN CHAT — CAPTURA DE DATOS
+     Abre un mini-formulario flotante para que el
+     usuario deje su nombre y teléfono.
+     El formulario envía a la misma acción del form
+     principal (action="#") — cámbiala por tu endpoint.
+═══════════════════════════════════════════════ -->
 
-<!-- Back to top -->
+<!-- Back to top — encima de chat y whatsapp -->
 <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <polyline points="18 15 12 9 6 15"/>
@@ -1004,6 +1054,13 @@
 
 </div>
 
+<!-- ═══════════════════════════════════════════════
+     BOTÓN WHATSAPP FLOTANTE
+     · Cambia el href por tu número real:
+       https://wa.me/57XXXXXXXXXX
+       (57 = código Colombia, sin el 0 inicial)
+     · data-tooltip = texto del tooltip en hover
+═══════════════════════════════════════════════ -->
 <a class="whatsapp-fab"
    href="https://wa.me/57XXXXXXXXXX?text=Hola%2C%20me%20interesa%20conocer%20sus%20servicios%20de%20administraci%C3%B3n."
    target="_blank"
@@ -1018,10 +1075,791 @@
   </svg>
 </a>
 
-<!-- Scripts -->
-<script src="/js/main.js" defer></script>
-<script src="/js/section-3-pin-services.js" defer></script>
-<script src="/js/app.js" defer></script>
+<script src="js/main.js"></script>
+<script src="js/section-3-pin-services.js"></script>
+<script src="js/mobile.js"></script>
+
+<!-- ═══════════════════════════════════════════════
+     CHAT FAB — lógica del panel flotante
+═══════════════════════════════════════════════ -->
+<script>
+(function () {
+  const fab     = document.getElementById('chatFab');
+  const panel   = document.getElementById('chatPanel');
+  const close   = document.getElementById('chatClose');
+  const form    = document.getElementById('chatForm');
+  const success = document.getElementById('chatSuccess');
+
+  if (!fab || !panel) return;
+
+  fab.addEventListener('click', () => {
+    const open = panel.classList.toggle('is-open');
+    fab.classList.toggle('is-active', open);
+    fab.setAttribute('aria-expanded', open);
+    if (open) panel.querySelector('input').focus();
+  });
+
+  close.addEventListener('click', () => {
+    panel.classList.remove('is-open');
+    fab.classList.remove('is-active');
+    fab.setAttribute('aria-expanded', false);
+  });
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!panel.contains(e.target) && e.target !== fab) {
+      panel.classList.remove('is-open');
+      fab.classList.remove('is-active');
+    }
+  });
+
+  // Envío del formulario
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Aquí puedes añadir fetch() a tu endpoint real
+    form.hidden = true;
+    success.hidden = false;
+    // Cierra el panel tras 3 segundos
+    setTimeout(() => {
+      panel.classList.remove('is-open');
+      fab.classList.remove('is-active');
+      setTimeout(() => { form.hidden = false; success.hidden = true; form.reset(); }, 500);
+    }, 3000);
+  });
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     SISTEMA DE TRADUCCIÓN
+     Para agregar o editar traducciones al inglés,
+     modifica el objeto TRANSLATIONS.en aquí abajo.
+     Cada clave es un selector CSS único del elemento.
+═══════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /* ── Diccionario de traducciones ─────────────────
+     key   = selector CSS del elemento (debe ser único)
+     value = texto en inglés
+     Si el elemento tiene HTML interno (strong, br),
+     usa innerHTML en lugar de textContent.
+  ─────────────────────────────────────────────── */
+  const TRANSLATIONS = {
+    en: {
+      /* <title> */
+      'title': 'STRATA PH · Professional HOA Management',
+
+      /* NAVBAR */
+      '.main-nav a[href="#home"]':        'Home',
+      '.main-nav a[href="#about"]':       'Who We Are',
+      '.main-nav a[href="#section-3"]':   'Services',
+      '.main-nav a[href="#section-4"]':   'Success Cases',
+      '.main-nav a[href="#contacts"]':    'Contact',
+
+      /* HERO */
+      '.hero-eyebrow':   'Professional HOA Management · Colombia',
+      '.hero-content h1':'Your building deserves<br />management without secrets',
+      '.hero-content .btn-primary': 'Request Management Audit →',
+
+      /* SECCIÓN 2 — FEATURES */
+      '.feature:nth-child(1) h4': 'Transparent Management',
+      '.feature:nth-child(1) p':  'Every peso received and every expense executed, documented and available to the Board in real time. No surprises, no fine print.',
+      '.feature:nth-child(2) h4': '24/7 Response',
+      '.feature:nth-child(2) p':  'Emergencies handled at any hour. Because a building\'s problems don\'t wait for the next business day.',
+      '.feature:nth-child(3) h4': 'Protected Patrimony',
+      '.feature:nth-child(3) p':  'Rigorous management doesn\'t just sustain your property — it increases its value. That is our only success metric.',
+
+      /* SECCIÓN 2 — PRINCIPAL */
+      '.about-text .section-tag': 'Who We Are',
+      '.about-text h2':           'We end opaque<br />management. For good.',
+      '.about-text p':            'We are a team specialized in HOA management that understands the frustration of Boards of Directors: confusing reports, untraceable payments, unsupervised contractors. <strong>We operate differently</strong> — with auditable processes, technology and an unwavering commitment to transparency.',
+      '.about-text .btn-primary': 'Request Personalized Proposal →',
+      '.rotating-svg textPath':   'CLEAR ACCOUNTS • ALWAYS AVAILABLE • NO SECRETS •',
+
+      /* SECCIÓN 2 — BOTTOM */
+      '.bottom-item:nth-child(1) h5': 'Transparency',
+      '.bottom-item:nth-child(1) p':  'Permanent access to financial statements, minutes and contracts. You decide with real information, not promises.',
+      '.bottom-item:nth-child(2) h5': 'Technical Rigor',
+      '.bottom-item:nth-child(2) p':  'We supervise every maintenance intervention. We select qualified contractors with no hidden commissions.',
+      '.bottom-item:nth-child(3) h5': 'Legal Backing',
+      '.bottom-item:nth-child(3) p':  'We operate under Law 675 of 2001 and Decree 768 of 2025. Your Board will always be protected and well advised.',
+
+      /* SECCIÓN 2.1 — EQUIPO */
+      '.team-copy .section-tag': 'The Team',
+      '.team-copy h2':           'Experts who respond.<br />Professionals who are accountable.',
+      '.team-copy p':            'Our team combines expertise in real estate management, accounting and conflict resolution. We are not intermediaries — we are strategic allies of the Board of Directors.',
+      '.team-copy .btn-primary': 'Meet the Team →',
+
+      /* SECCIÓN 2.2 — STATS */
+      '.stats-eyebrow':     'The numbers back what we promise. Verify them yourself.',
+      '.stats-content h2':  'Results your<br />Board can audit',
+      '.stat-item:nth-child(1) p': 'Communities Managed',
+      '.stat-item:nth-child(2) p': 'Satisfaction Index',
+      '.stat-item:nth-child(3) p': 'Max Response Time',
+
+      /* SECCIÓN 3 — SERVICIOS */
+      '.services-pin-left .section-tag': 'Our Services',
+      '.services-pin-left h2':           'Real solutions for<br />your community',
+      '.services-pin-left p':            'We design every process to eliminate the most common friction points: lack of information, reactive maintenance and unresolved conflicts. Professional management, verifiable results.',
+      '.services-pin-left .btn-primary': 'Request Management Audit →',
+
+      '.services-pin-card:nth-child(1) h3': 'Bulletproof Financial Management',
+      '.services-pin-card:nth-child(1) p':  'We manage fee collection, vendors and annual budgets with detailed monthly reports that any owner can understand. No evasiveness, no confusing accounts — your finances, always clear and auditable.',
+      '.services-pin-card:nth-child(2) h3': 'Maintenance with Rigorous Oversight',
+      '.services-pin-card:nth-child(2) p':  'We coordinate, supervise and document every technical intervention. We select qualified contractors with no hidden commissions and verify that work meets agreed standards — protecting every owner\'s investment.',
+      '.services-pin-card:nth-child(3) h3': 'Community & Conflict Resolution',
+      '.services-pin-card:nth-child(3) p':  'We mediate with criteria, experience and legal backing. We apply regulations fairly under Decree 768 of 2025, manage complaints and build communities where living is pleasant for everyone.',
+      '.services-pin-card:nth-child(4) h3': 'Emergency Response 24 / 7',
+      '.services-pin-card:nth-child(4) p':  'Leaks, electrical outages, structural damage — we respond at any hour, any day. Because the safety and well-being of your building have no office hours or holidays.',
+
+      /* SECCIÓN 3.1 — WHY US */
+      '.why-item:nth-child(1) h3': 'Total<br />Transparency',
+      '.why-item:nth-child(1) p':  'Permanent access to financial statements, minutes and contracts. You manage with real information — we execute with verifiable honesty.',
+      '.why-item:nth-child(2) h3': 'No Conflicts<br />of Interest',
+      '.why-item:nth-child(2) p':  'We have no proprietary contractors and receive no commissions. We select the best vendor for your building — not for our pocket.',
+      '.why-item:nth-child(3) h3': 'Applied<br />Technology',
+      '.why-item:nth-child(3) p':  'Digital platform for payments, reports and communications. End of paper reports nobody understands and untracked WhatsApp messages.',
+      '.why-item:nth-child(4) h3': 'Permanent<br />Legal Backing',
+      '.why-item:nth-child(4) p':  'We operate under Law 675 of 2001 and Decree 768 of 2025. Your Board will always be protected, advised and in regulatory compliance.',
+
+      /* SECCIÓN 4 — CASOS */
+      '.work-header .section-tag': 'Success Cases',
+      '.work-header h2':           'Communities we transformed.<br />Boards that breathe easy.',
+      '.work-header p':            'These are some of the buildings and communities where we optimized management, recovered overdue fees and built more organized, higher-value communities.',
+
+      '.work-card:nth-child(1) h3': 'Conjunto Residencial Norte',
+      '.work-card:nth-child(1) p':  'Fee Recovery · 92% in 90 days',
+      '.work-card:nth-child(2) h3': 'Torre Empresarial Centro',
+      '.work-card:nth-child(2) p':  'Comprehensive Financial Restructuring',
+      '.work-card:nth-child(3) h3': 'Condominio Las Palmas',
+      '.work-card:nth-child(3) p':  'Preventive Maintenance Plan',
+      '.work-card:nth-child(4) h3': 'Edificio Mixto San Martín',
+      '.work-card:nth-child(4) p':  'Mediation & Internal Regulations',
+      '.work-card:nth-child(5) h3': 'Conjunto Familiar El Prado',
+      '.work-card:nth-child(5) p':  'Operating Cost Reduction · 28%',
+      '.work-card:nth-child(6) h3': 'Unidad Cerrada Los Arrayanes',
+      '.work-card:nth-child(6) p':  'Digital Platform Implementation',
+      '.work-card:nth-child(7) h3': 'Edificio Patrimonio',
+      '.work-card:nth-child(7) p':  'Construction Supervision & Restoration',
+      '.work-card:nth-child(8) h3': 'Conjunto Premium Reserva Verde',
+      '.work-card:nth-child(8) p':  'Documented Value Increase · +18%',
+
+      /* SECCIÓN 5 — PURPOSE */
+      '.purpose-content h2':    'Where management<br />becomes peace of mind',
+      '.purpose-content > p':   'Your property is the most important asset for many families. It deserves management that protects it, increases its value and renders accounts without anyone having to ask. That is what we do, every day.',
+      '.purpose-item:nth-child(1) p': 'Detailed Monthly Financial Reports',
+      '.purpose-item:nth-child(2) p': 'Emergency Response 24 / 7',
+      '.purpose-item:nth-child(3) p': 'Expert Community Mediation',
+      '.purpose-item:nth-child(4) p': 'Vendor Technical Supervision',
+      '.purpose-item:nth-child(5) p': 'Digital Management Platform',
+      '.purpose-item:nth-child(6) p': 'Zero Hidden Commissions',
+
+      /* SECCIÓN 6 — CONTACTO */
+      '.contact-header .section-tag': 'Contact',
+      '.contact-header h2':           'Let\'s talk about your building.<br />No cost, no commitment.',
+      'label[for-name]':              'Representative\'s Name *',
+      '.contact-form .form-button':   'Request Management Audit',
+      '.form-footer p':               'ⓘ Your data is confidential and used only to contact you. By submitting you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms & Conditions</a>.',
+
+      '.contact-info article:nth-child(1) h4': 'Address',
+      '.contact-info article:nth-child(2) h4': 'Email',
+      '.contact-info article:nth-child(3) h4': '24/7 Line',
+
+      /* FOOTER */
+      '.footer-links a:nth-child(1)': 'Privacy Policy',
+      '.footer-links a:nth-child(3)': 'Terms & Conditions',
+      '.footer-links a:nth-child(5)': 'PH Regulations',
+      '.footer-copy': 'STRATA PH · Professional HOA Management © 2026',
+    }
+  };
+
+  /* ── Textos originales en español (se capturan al cargar) ── */
+  const ORIGINALS = {};
+
+  /* ── Idioma activo ─────────────────────────────────────── */
+  let currentLang = localStorage.getItem('ph-lang') || 'es';
+
+  /* ── Captura textos originales antes de cualquier cambio ── */
+  function captureOriginals() {
+    Object.keys(TRANSLATIONS.en).forEach((sel) => {
+      if (sel === 'title') {
+        ORIGINALS[sel] = document.title;
+        return;
+      }
+      const el = document.querySelector(sel);
+      if (el) ORIGINALS[sel] = el.innerHTML;
+    });
+  }
+
+  /* ── Aplica un idioma ───────────────────────────────────── */
+  function applyLang(lang) {
+    if (lang === 'es') {
+      Object.keys(ORIGINALS).forEach((sel) => {
+        if (sel === 'title') { document.title = ORIGINALS[sel]; return; }
+        const el = document.querySelector(sel);
+        if (el) el.innerHTML = ORIGINALS[sel];
+      });
+    } else {
+      Object.entries(TRANSLATIONS.en).forEach(([sel, text]) => {
+        if (sel === 'title') { document.title = text; return; }
+        const el = document.querySelector(sel);
+        if (el) el.innerHTML = text;
+      });
+    }
+
+    /* Nav links también */
+    const navLinks = {
+      es: ['Inicio', 'Quiénes Somos', 'Servicios', 'Casos de Éxito', 'Contacto', 'Blog'],
+      en: ['Home', 'Who We Are', 'Services', 'Success Cases', 'Contact', 'Blog']
+    };
+    document.querySelectorAll('.main-nav a').forEach((a, i) => {
+      if (navLinks[lang][i]) a.textContent = navLinks[lang][i];
+    });
+
+    /* Form placeholders */
+    const placeholders = {
+      es: ['Su nombre completo', 'correo@ejemplo.com', 'Ej. Conjunto Residencial El Prado', '¿Cuál es el principal problema que enfrenta hoy su copropiedad?'],
+      en: ['Your full name', 'email@example.com', 'E.g. Residential Community El Prado', 'What is the main problem your community faces today?']
+    };
+    document.querySelectorAll('.contact-form input, .contact-form textarea').forEach((el, i) => {
+      if (placeholders[lang][i] !== undefined) el.placeholder = placeholders[lang][i];
+    });
+
+    /* Select options */
+    const options = {
+      es: ['Administración Integral', 'Auditoría de Gestión', 'Supervisión de Mantenimiento', 'Mediación y Convivencia', 'Asesoría Puntual'],
+      en: ['Comprehensive Management', 'Management Audit', 'Maintenance Supervision', 'Mediation & Community', 'Specialized Advisory']
+    };
+    document.querySelectorAll('.contact-form select option').forEach((opt, i) => {
+      if (options[lang][i]) opt.textContent = options[lang][i];
+    });
+
+    /* Labels del formulario */
+    const labels = {
+      es: ["Nombre del Representante *", "Correo Electrónico *", "Nombre del Conjunto o Edificio", "Servicio de Interés", "Cuéntenos su situación actual"],
+      en: ["Representative's Name *", "Email Address *", "Community or Building Name", "Service of Interest", "Tell us about your current situation"]
+    };
+    document.querySelectorAll('.contact-form label').forEach((lbl, i) => {
+      if (!labels[lang][i]) return;
+      /* Solo el primer nodo de texto del label */
+      const tn = Array.from(lbl.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
+      if (tn) tn.textContent = labels[lang][i] + ' ';
+    });
+
+    /* html lang */
+    document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+
+    /* Pills */
+    const pills = {
+      es: ['Cuentas Claras','Respuesta 24/7','Sin Letra Pequeña','Equipo Certificado','Cuentas Claras','Respuesta 24/7','Sin Letra Pequeña','Equipo Certificado',
+           'Reportes Mensuales','Proveedores Auditados','Mediación Experta','Valorización Real','Reportes Mensuales','Proveedores Auditados','Mediación Experta','Valorización Real'],
+      en: ['Clear Accounts','24/7 Response','No Fine Print','Certified Team','Clear Accounts','24/7 Response','No Fine Print','Certified Team',
+           'Monthly Reports','Audited Vendors','Expert Mediation','Real Value Growth','Monthly Reports','Audited Vendors','Expert Mediation','Real Value Growth']
+    };
+    document.querySelectorAll('.why-pills-track span').forEach((sp, i) => {
+      if (pills[lang][i]) sp.textContent = pills[lang][i];
+    });
+  }
+
+  /* ── UI del switcher ────────────────────────────────────── */
+  function updateSwitcherUI(lang) {
+    /* Bandera visible en el botón */
+    document.querySelectorAll('#langCurrent .lang-flag').forEach((f) => {
+      f.style.display = f.dataset.lang === lang ? '' : 'none';
+    });
+    /* Opciones del dropdown */
+    document.querySelectorAll('.lang-option').forEach((btn) => {
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active);
+    });
+  }
+
+  /* ── Toggle dropdown ────────────────────────────────────── */
+  const btn       = document.getElementById('langCurrent');
+  const dropdown  = document.getElementById('langDropdown');
+  const switcher  = document.getElementById('langSwitcher');
+
+  btn.addEventListener('click', () => {
+    const open = switcher.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!switcher.contains(e.target)) {
+      switcher.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', false);
+    }
+  });
+
+  document.querySelectorAll('.lang-option').forEach((opt) => {
+    opt.addEventListener('click', () => {
+      currentLang = opt.dataset.lang;
+      localStorage.setItem('ph-lang', currentLang);
+      applyLang(currentLang);
+      updateSwitcherUI(currentLang);
+      switcher.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', false);
+    });
+  });
+
+  /* ── Init ───────────────────────────────────────────────── */
+  captureOriginals();
+  if (currentLang !== 'es') {
+    applyLang(currentLang);
+  }
+  updateSwitcherUI(currentLang);
+
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     NAV ACTIVA POR SECCIÓN
+     Usa IntersectionObserver para detectar qué
+     sección está visible y resalta el link
+     correspondiente en la navegación.
+═══════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /*
+    Mapa: id de sección → href del link en el nav
+    Si añades secciones nuevas, agrégalas aquí.
+  */
+  const SECTION_MAP = {
+    'home':       '#home',
+    'about':      '#about',
+    'section-2-1':'#about',      /* equipo → agrupa con Quiénes Somos */
+    'section-2-2':'#about',      /* stats  → agrupa con Quiénes Somos */
+    'section-3':  '#section-3',
+    'section-3-1':'#section-3',  /* why us → agrupa con Servicios     */
+    'section-4':  '#section-4',
+    'section-5':  '#section-4',  /* purpose → agrupa con Casos Éxito  */
+    'contacts':   '#contacts',
+  };
+
+  const navLinks = document.querySelectorAll('.main-nav a');
+
+  /* Activa el link cuyo href coincide */
+  function setActive(href) {
+    navLinks.forEach((a) => {
+      const isActive = a.getAttribute('href') === href;
+      a.classList.toggle('is-active', isActive);
+    });
+  }
+
+  /* Seguimiento de secciones visibles con sus ratios */
+  const visible = {};
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        visible[entry.target.id] = entry.intersectionRatio;
+      });
+
+      /* La sección con mayor ratio visible gana */
+      let bestId   = null;
+      let bestRatio = 0;
+
+      Object.entries(visible).forEach(([id, ratio]) => {
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          bestId    = id;
+        }
+      });
+
+      if (bestId && SECTION_MAP[bestId]) {
+        setActive(SECTION_MAP[bestId]);
+      }
+    },
+    {
+      /*
+        threshold escalonado: detecta desde el 1% hasta el 100%
+        para que la transición entre secciones sea inmediata.
+      */
+      threshold: Array.from({ length: 21 }, (_, i) => i * 0.05),
+
+      /*
+        rootMargin: resta el alto del header para que la detección
+        empiece justo donde el contenido aparece bajo la barra.
+      */
+      rootMargin: '-66px 0px 0px 0px',
+    }
+  );
+
+  /* Observar todas las secciones del mapa */
+  Object.keys(SECTION_MAP).forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  /* Activar "Inicio" al cargar si estamos en el top */
+  setActive('#home');
+
+})();
+</script>
+
+<style>
+/* ── Nav activa — estilos del link resaltado ── */
+.main-nav a.is-active {
+  opacity: 1;
+  color: #edff00 !important;
+}
+
+/* Línea subrayado animada */
+.main-nav a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: #edff00;
+  border-radius: 2px;
+  animation: navUnderline 0.3s cubic-bezier(.19, 1, .22, 1) forwards;
+}
+
+@keyframes navUnderline {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* En hero el header es transparente sobre fondo claro:
+   link activo en negro + línea negra para contraste */
+.site-header.is-hero .main-nav a.is-active {
+  color: #050505 !important;
+}
+.site-header.is-hero .main-nav a.is-active::after {
+  background: #050505;
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════
+     MEJORAS: validación form, swipe slider, dots
+═══════════════════════════════════════════════ -->
+<script>
+(function () {
+
+  /* ── VALIDACIÓN VISUAL DEL FORMULARIO ─────────── */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+
+    inputs.forEach((input) => {
+      /* Al salir del campo sin llenarlo */
+      input.addEventListener('blur', () => {
+        if (!input.validity.valid) {
+          input.classList.add('is-error');
+        } else {
+          input.classList.remove('is-error');
+        }
+      });
+
+      /* Al escribir, quitar el error */
+      input.addEventListener('input', () => {
+        if (input.validity.valid) {
+          input.classList.remove('is-error');
+        }
+      });
+    });
+
+    /* Al intentar enviar */
+    contactForm.addEventListener('submit', (e) => {
+      let hasError = false;
+      inputs.forEach((input) => {
+        if (!input.validity.valid) {
+          input.classList.add('is-error');
+          if (!hasError) { input.focus(); hasError = true; }
+        }
+      });
+      if (hasError) e.preventDefault();
+    });
+  }
+
+  /* ── SWIPE TÁCTIL EN EL SLIDER ─────────────────── */
+  const slider  = document.getElementById('workSlider');
+  const track   = slider ? slider.querySelector('.work-track') : null;
+  const dotsEl  = document.getElementById('workDots');
+  const dots    = dotsEl ? Array.from(dotsEl.querySelectorAll('.work-dot')) : [];
+
+  if (!slider || !track) return;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    /* Solo si el gesto es más horizontal que vertical */
+    if (Math.abs(dx) < Math.abs(dy) || Math.abs(dx) < 40) return;
+
+    if (dx < 0) {
+      document.querySelector('.work-next') &&
+      document.querySelector('.work-next').click();
+    } else {
+      document.querySelector('.work-prev') &&
+      document.querySelector('.work-prev').click();
+    }
+  }, { passive: true });
+
+  /* ── SINCRONIZAR DOTS CON EL SLIDER ─────────────── */
+  /* El slider expone currentWorkIndex desde main.js
+     Hacemos polling ligero para sincronizar los dots  */
+  function syncDots() {
+    /* Calcular índice activo a partir del transform actual */
+    const transform = track.style.transform || 'translateX(0)';
+    const match     = transform.match(/translateX\(-?(\d+(\.\d+)?)px\)/);
+    if (!match) { activateDot(0); return; }
+
+    const offset    = parseFloat(match[1]);
+    const cards     = track.querySelectorAll('.work-card');
+    if (!cards.length) return;
+
+    const cardW     = cards[0].getBoundingClientRect().width;
+    const gap       = parseFloat(getComputedStyle(track).gap) || 0;
+    const step      = cardW + gap;
+    const idx       = step > 0 ? Math.round(offset / step) : 0;
+    activateDot(idx);
+  }
+
+  function activateDot(idx) {
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+  }
+
+  /* Observar cambios de transform con MutationObserver */
+  new MutationObserver(syncDots).observe(track, {
+    attributes: true,
+    attributeFilter: ['style']
+  });
+
+})();
+</script>
+
+<style>
+/* ── Validación visual ── */
+.contact-form input.is-error,
+.contact-form textarea.is-error {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.15) !important;
+}
+
+.contact-form input.is-error::placeholder,
+.contact-form textarea.is-error::placeholder {
+  color: rgba(255, 68, 68, 0.7);
+}
+
+/* ── Slider dots ── */
+.work-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 0 var(--page-padding);
+}
+
+.work-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.work-dot.is-active {
+  background: var(--black);
+  width: 24px;
+  border-radius: 4px;
+  transform: none;
+}
+
+/* ── Social links header — SVG inline ── */
+.social-links a svg {
+  display: block;
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════
+     EFECTOS DE SCROLL — CSS + JS
+═══════════════════════════════════════════════ -->
+<style>
+/* ── Servicios: imagen zoom ampliado → se ajusta ── */
+.js .reveal-service {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.85s ease,
+    transform 0.95s cubic-bezier(.19,1,.22,1);
+}
+.js .reveal-service.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* La imagen arranca grande y se encoge al entrar */
+.js .reveal-service img:first-child {
+  transform: scale(1.18);
+  transition: transform 1.4s cubic-bezier(.19,1,.22,1);
+}
+.js .reveal-service.is-visible img:first-child {
+  transform: scale(1);
+}
+/* Contenido: entra con leve retraso */
+.js .reveal-service .services-pin-content {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease 0.3s,
+    transform 0.8s cubic-bezier(.19,1,.22,1) 0.3s;
+}
+.js .reveal-service.is-visible .services-pin-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Why-line: mitad de ancho ── */
+.why-line {
+  width: 50% !important;
+}
+
+/* ── Why-items: cortina izquierda → derecha
+   Usamos overflow hidden en el wrapper + translateX
+   en el contenido para no cortar el layout ── */
+.js .why-item {
+  overflow: hidden;
+}
+.js .why-item > * {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.85s cubic-bezier(.19,1,.22,1);
+}
+.js .why-item.is-visible > * {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Retrasos escalonados por hijo */
+.js .why-item > *:nth-child(1) { transition-delay: 0s; }
+.js .why-item > *:nth-child(2) { transition-delay: 0.1s; }
+.js .why-item > *:nth-child(3) { transition-delay: 0.2s; }
+.js .why-item > *:nth-child(4) { transition-delay: 0.3s; }
+
+/* La línea mantiene su animación scaleX propia */
+.js .why-item .why-line {
+  opacity: 1 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(.19,1,.22,1) 0.35s !important;
+}
+.js .why-item.is-visible .why-line {
+  transform: scaleX(1) !important;
+}
+
+/* ── Purpose image: cortina izquierda → derecha ──
+   El clip-path va en la IMAGEN, no en el div,
+   para que el div mantenga su altura y el observer
+   pueda detectarlo aunque la imagen esté oculta.
+─────────────────────────────────────────────── */
+
+/* El div siempre ocupa su espacio — solo oculta la imagen */
+.js .reveal-curtain-left img:first-child {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.07);
+  transition:
+    clip-path 1.1s cubic-bezier(.19,1,.22,1),
+    transform  1.4s cubic-bezier(.19,1,.22,1) 0.1s;
+}
+
+.js .reveal-curtain-left.is-visible img:first-child {
+  clip-path: inset(0 0% 0 0);
+  transform: scale(1);
+}
+
+/* ── Formulario: sube desde abajo ── */
+.js .reveal-fade-up {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(.19,1,.22,1);
+}
+.js .reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   CORRECCIÓN COLOR GLOBAL PARA PANTALLAS P3/RETINA
+   Afecta a --accent usado en botones, líneas, dots,
+   badges, pills, checks — todo el sistema de color.
+   En pantallas sRGB estándar este bloque se ignora.
+═══════════════════════════════════════════════ */
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    :root {
+      /* #edff00 en sRGB → equivalente perceptual en P3
+         Reduce la saturación que Retina amplifica   */
+      --accent: color(display-p3 0.878 0.976 0.082);
+    }
+  }
+}
+/* ── Reducir movimiento (accesibilidad) ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-service,
+  .reveal-service img:first-child,
+  .reveal-service .services-pin-content,
+  .reveal-curtain-left img:first-child,
+  .reveal-fade-up,
+  .why-item > *,
+  .why-item .why-line {
+    transition: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+
+<script>
+(function () {
+  if (!document.documentElement.classList.contains('js')) return;
+
+  function observe(selector, threshold, rootMargin) {
+    const els = document.querySelectorAll(selector);
+    if (!els.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: threshold || 0.12, rootMargin: rootMargin || '0px 0px -5% 0px' });
+    els.forEach((el) => obs.observe(el));
+  }
+
+  /* Servicios — threshold bajo para que la imagen ya esté
+     "aterrizando" cuando la tarjeta entra en pantalla     */
+  observe('.reveal-service', 0.06);
+
+  /* Cortina purpose-image — threshold bajo: dispara apenas entra */
+  observe('.reveal-curtain-left', 0.05);
+
+  /* Formulario */
+  observe('.reveal-fade-up', 0.10);
+
+  /* why-item: main.js ya lo observa con threshold 0.22
+     Nos apoyamos en esa misma clase .is-visible, no duplicamos */
+
+})();
+</script>
 
 </body>
 </html>
