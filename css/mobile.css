@@ -1,15 +1,83 @@
 /* =========================
    MOBILE.CSS
-   Estilos nuevos: hamburguesa, menú móvil, back-to-top.
-   No sobreescribe nada del CSS existente.
+   Hamburguesa, menú móvil, back-to-top, preloader
 ========================= */
 
 /* ══════════════════════════════════════
+   PRELOADER
+══════════════════════════════════════ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Logo centrado */
+.preloader-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ffffff;
+}
+
+.preloader-mark {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background:
+    linear-gradient(45deg,  currentColor 0 45%, transparent 45%),
+    linear-gradient(-45deg, #edff00 0 45%, transparent 45%);
+}
+
+.preloader-name {
+  font-family: "Sora", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* Barra de carga */
+.preloader-bar-wrap {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.preloader-bar {
+  height: 100%;
+  width: 0%;
+  background: #edff00;
+  border-radius: 999px;
+  transition: width 0.1s ease;
+}
+
+/* ══════════════════════════════════════
    HAMBURGUESA
-   Oculta en desktop, visible en móvil
 ══════════════════════════════════════ */
 .hamburger {
-  display: none;         /* desktop: invisible */
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -22,7 +90,6 @@
   padding: 4px;
   color: inherit;
   flex-shrink: 0;
-  order: 2;              /* va después del lang-switcher en el header-right */
 }
 
 .hamburger span {
@@ -35,7 +102,6 @@
   transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
 }
 
-/* X al estar abierto */
 .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.is-open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -44,14 +110,15 @@
    MENÚ MÓVIL FULLSCREEN
 ══════════════════════════════════════ */
 .mobile-nav {
-  display: none;           /* solo visible en móvil cuando is-open */
+  display: none;
   position: fixed;
   inset: 0;
-  z-index: 9989;           /* debajo del header (9999) */
+  z-index: 9989;
   background: #050505;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;   /* links alineados a la izquierda */
   justify-content: center;
+  padding: 0 clamp(28px, 8vw, 64px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -65,12 +132,12 @@
 .mobile-nav a {
   display: block;
   width: 100%;
-  text-align: center;
-  padding: 16px 24px;
+  text-align: left;          /* texto a la izquierda */
+  padding: 14px 0;
   color: #ffffff;
   text-decoration: none;
   font-family: "Sora", sans-serif;
-  font-size: clamp(22px, 6vw, 32px);
+  font-size: clamp(20px, 5.5vw, 28px);  /* 2 puntos menos que antes */
   font-weight: 900;
   letter-spacing: -0.04em;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -89,9 +156,8 @@
 /* Redes dentro del menú móvil */
 .mobile-nav-social {
   display: flex;
-  gap: 28px;
-  margin-top: 36px;
-  padding-top: 24px;
+  gap: 24px;
+  margin-top: 32px;
 }
 
 .mobile-nav-social a {
@@ -110,14 +176,12 @@
 
 /* ══════════════════════════════════════
    BACK TO TOP
-   bottom: 166px = encima de chat (96px) y wa (28px + 58px/2)
 ══════════════════════════════════════ */
 .back-to-top {
   position: fixed;
   bottom: 166px;
   right: 28px;
   z-index: 9998;
-
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -125,10 +189,8 @@
   background: #ffffff;
   color: #050505;
   cursor: pointer;
-
   display: grid;
   place-items: center;
-
   opacity: 0;
   transform: translateY(12px);
   pointer-events: none;
@@ -157,32 +219,27 @@
 }
 
 /* ══════════════════════════════════════
-   RESPONSIVE — activar hamburguesa
+   RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1024px) {
 
   /* Mostrar hamburguesa */
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
 
-  /* Mostrar menú móvil (oculto hasta is-open) */
-  .mobile-nav {
-    display: flex;
-  }
+  /* Activar menú móvil */
+  .mobile-nav { display: flex; }
 
-  /* header-right: lang | hamburguesa — ambos a la derecha */
+  /* Header: logo izq | lang+hamburguesa der */
   .header-right {
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-self: end;
   }
 
-  /* Ocultar texto ES/EN en la bandera y el caret */
+  /* Solo bandera — sin texto ES/EN ni caret */
   .lang-flag span,
-  .lang-caret {
-    display: none;
-  }
+  .lang-caret { display: none; }
 
   .lang-current {
     padding: 5px 8px;
@@ -190,7 +247,12 @@
   }
 }
 
+/* Why image: más espacio encima en móvil (después del banner/pills) */
 @media (max-width: 760px) {
+  .why-image {
+    margin-top: 48px !important;
+  }
+
   .back-to-top {
     bottom: 152px;
     right: 20px;
