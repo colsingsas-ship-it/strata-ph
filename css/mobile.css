@@ -1,9 +1,11 @@
 /* =========================
-   MOBILE — menú hamburguesa, back-to-top,
-   ajustes de texto, layout móvil
+   MOBILE.CSS — hamburguesa, botones flotantes,
+   ajustes de texto responsive
 ========================= */
 
-/* ── MENÚ HAMBURGUESA ── */
+/* ══════════════════════════════════════
+   HAMBURGUESA
+══════════════════════════════════════ */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -16,7 +18,8 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  z-index: 10001;
+  flex-shrink: 0;
+  color: inherit;
 }
 .hamburger span {
   display: block;
@@ -31,7 +34,9 @@
 .hamburger.is-open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── MENÚ MÓVIL DESPLEGABLE ── */
+/* ══════════════════════════════════════
+   MENÚ MÓVIL FULLSCREEN
+══════════════════════════════════════ */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -42,7 +47,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -55,61 +59,108 @@
   display: block;
   width: 100%;
   text-align: center;
-  padding: 18px 24px;
+  padding: 16px 24px;
   color: var(--white);
   text-decoration: none;
   font-family: var(--font-heading);
-  font-size: clamp(22px, 6vw, 32px);
+  font-size: clamp(20px, 5.5vw, 30px);
   font-weight: 900;
   letter-spacing: -0.04em;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
 }
 .mobile-nav a:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
 .mobile-nav a:hover,
 .mobile-nav a.is-active { color: var(--accent); }
 
-/* Redes sociales dentro del menú móvil */
 .mobile-nav-social {
   display: flex;
   gap: 28px;
-  margin-top: 36px;
-  padding-top: 28px;
+  margin-top: 32px;
+  padding-top: 24px;
 }
 .mobile-nav-social a {
+  display: grid;
+  place-items: center;
   width: auto;
   padding: 0;
   border: none;
-  font-size: 0;
   color: rgba(255,255,255,0.55);
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 .mobile-nav-social a:hover { color: var(--accent); }
-.mobile-nav-social svg { display: block; }
+.mobile-nav-social a svg { display: block; }
 
-/* ── BACK TO TOP ── */
+/* ══════════════════════════════════════
+   HEADER RESPONSIVE
+   Móvil: logo izq | lang + hamburguesa der
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  /* Ocultar nav desktop y social desktop */
+  .main-nav,
+  .social-links { display: none; }
+
+  /* Mostrar hamburguesa */
+  .hamburger { display: flex; }
+
+  /* Mostrar menú móvil */
+  .mobile-nav { display: flex; }
+
+  /* Header: logo a la izquierda, header-right a la derecha */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* header-right agrupa lang + hamburguesa en fila */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Lang switcher: solo bandera, sin texto ni caret */
+  .lang-flag span { display: none; }
+  .lang-caret     { display: none; }
+  .lang-current   { padding: 4px 6px; gap: 4px; }
+
+  /* Logo: mantiene forma completa */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+  }
+  .logo-mark {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ══════════════════════════════════════
+   BACK TO TOP
+   Posición encima de chat-fab y wa-fab
+══════════════════════════════════════ */
 .back-to-top {
   position: fixed;
-  bottom: 166px; /* encima de chat-fab (96px) y whatsapp (28px) */
+  bottom: 166px;
   right: 28px;
   z-index: 9998;
-
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 2px solid rgba(0,0,0,0.15);
+  border: 2px solid rgba(0,0,0,0.12);
   background: var(--white);
   color: var(--black);
   cursor: pointer;
-
   display: grid;
   place-items: center;
-
   opacity: 0;
   transform: translateY(12px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, border-color 0.25s ease;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 .back-to-top svg { width: 18px; height: 18px; }
@@ -124,56 +175,18 @@
   box-shadow: 0 8px 24px rgba(237,255,0,0.35);
 }
 
-/* ── SELECTOR IDIOMA MÓVIL — solo bandera ── */
-@media (max-width: 1024px) {
-  /* En móvil: ocultar texto ES/EN, solo bandera */
-  .lang-flag span { display: none; }
-  .lang-current { padding: 5px 8px; gap: 5px; }
-  .lang-caret { display: none; }
-
-  /* Hamburguesa visible */
-  .hamburger { display: flex; }
-
-  /* Nav principal oculta */
-  .main-nav, .social-links { display: none; }
-
-  /* Menú móvil visible */
-  .mobile-nav { display: flex; }
-
-  /* Header: logo | hamburguesa centrado | bandera */
-  .site-header {
-    grid-template-columns: 1fr auto 1fr;
-  }
-  .hamburger { justify-self: center; }
-  .header-right { justify-self: end; }
-}
-
-/* ── AJUSTES DE TEXTO MÓVIL ── */
 @media (max-width: 760px) {
-  /* Hero */
-  .hero-eyebrow { font-size: 11px; letter-spacing: 0.12em; margin-bottom: 28px; }
-
-  /* Stats */
-  .stats-eyebrow { font-size: 10px; }
-
-  /* Servicios — left col texto reducido */
-  .services-pin-left p { font-size: 14px; }
-
-  /* Why section */
-  .why-item p { font-size: 14px; }
-
-  /* Formulario */
-  .contact-header h2 { font-size: clamp(28px, 7vw, 42px); }
-  .form-footer p { font-size: 13px; }
-
-  /* Footer copy */
-  .footer-copy { font-size: 11px; }
-
-  /* Back to top en móvil: un poco más abajo */
-  .back-to-top { bottom: 152px; right: 20px; width: 42px; height: 42px; }
+  .back-to-top {
+    bottom: 152px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+  }
 }
 
-/* ── WORK DOTS ── */
+/* ══════════════════════════════════════
+   WORK DOTS
+══════════════════════════════════════ */
 .work-dots {
   display: flex;
   justify-content: center;
@@ -187,6 +200,7 @@
   background: rgba(0,0,0,0.18);
   transition: background 0.3s ease, width 0.3s ease;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .work-dot.is-active {
   background: var(--black);
@@ -194,7 +208,10 @@
   border-radius: 4px;
 }
 
-/* ── NAV ACTIVA ── */
+/* ══════════════════════════════════════
+   NAV ACTIVA
+══════════════════════════════════════ */
+.main-nav a { position: relative; }
 .main-nav a.is-active { opacity: 1; color: #edff00 !important; }
 .main-nav a.is-active::after {
   content: '';
@@ -212,12 +229,31 @@
 .site-header.is-hero .main-nav a.is-active { color: #050505 !important; }
 .site-header.is-hero .main-nav a.is-active::after { background: #050505; }
 
-/* ── VALIDACIÓN FORM ── */
+/* ══════════════════════════════════════
+   VALIDACIÓN FORM
+══════════════════════════════════════ */
 .contact-form input.is-error,
 .contact-form textarea.is-error {
   border-color: #ff4444 !important;
   box-shadow: 0 0 0 3px rgba(255,68,68,0.15) !important;
 }
 
-/* ── SOCIAL HEADER SVG ── */
-.social-links a svg { display: block; }
+/* ══════════════════════════════════════
+   AJUSTES TEXTO MÓVIL
+══════════════════════════════════════ */
+@media (max-width: 760px) {
+  .hero-eyebrow  { font-size: 11px; letter-spacing: 0.12em; }
+  .stats-eyebrow { font-size: 10px; }
+  .contact-header h2 { font-size: clamp(26px, 7vw, 40px); }
+  .footer-copy   { font-size: 11px; }
+}
+
+/* ══════════════════════════════════════
+   P3 NAV ACTIVA
+══════════════════════════════════════ */
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    .main-nav a.is-active { color: color(display-p3 0.878 0.976 0.082) !important; }
+    .main-nav a.is-active::after { background: color(display-p3 0.878 0.976 0.082); }
+  }
+}
