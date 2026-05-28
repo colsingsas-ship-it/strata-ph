@@ -1,35 +1,41 @@
 /* =========================
-   MOBILE.CSS — hamburguesa, botones flotantes,
-   ajustes de texto responsive
+   MOBILE.CSS
+   Estilos nuevos: hamburguesa, menú móvil, back-to-top.
+   No sobreescribe nada del CSS existente.
 ========================= */
 
 /* ══════════════════════════════════════
    HAMBURGUESA
+   Oculta en desktop, visible en móvil
 ══════════════════════════════════════ */
 .hamburger {
-  display: none;
+  display: none;         /* desktop: invisible */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 4px;
-  flex-shrink: 0;
   color: inherit;
+  flex-shrink: 0;
+  order: 2;              /* va después del lang-switcher en el header-right */
 }
+
 .hamburger span {
   display: block;
   width: 22px;
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
   transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
 }
+
+/* X al estar abierto */
 .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.is-open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -38,12 +44,11 @@
    MENÚ MÓVIL FULLSCREEN
 ══════════════════════════════════════ */
 .mobile-nav {
-  display: none;
+  display: none;           /* solo visible en móvil cuando is-open */
   position: fixed;
   inset: 0;
-  z-index: 9990;
-  background: var(--black);
-  color: var(--white);
+  z-index: 9989;           /* debajo del header (9999) */
+  background: #050505;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -51,128 +56,138 @@
   pointer-events: none;
   transition: opacity 0.35s ease;
 }
+
 .mobile-nav.is-open {
   opacity: 1;
   pointer-events: all;
 }
+
 .mobile-nav a {
   display: block;
   width: 100%;
   text-align: center;
   padding: 16px 24px;
-  color: var(--white);
+  color: #ffffff;
   text-decoration: none;
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 5.5vw, 30px);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(22px, 6vw, 32px);
   font-weight: 900;
   letter-spacing: -0.04em;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: color 0.2s ease;
 }
-.mobile-nav a:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-.mobile-nav a:hover,
-.mobile-nav a.is-active { color: var(--accent); }
 
+.mobile-nav a:first-child {
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.is-active {
+  color: #edff00;
+}
+
+/* Redes dentro del menú móvil */
 .mobile-nav-social {
   display: flex;
   gap: 28px;
-  margin-top: 32px;
+  margin-top: 36px;
   padding-top: 24px;
 }
+
 .mobile-nav-social a {
   display: grid;
   place-items: center;
-  width: auto;
   padding: 0;
   border: none;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   transition: color 0.2s ease;
   text-decoration: none;
+  width: auto;
+  font-size: 0;
 }
-.mobile-nav-social a:hover { color: var(--accent); }
-.mobile-nav-social a svg { display: block; }
 
-/* ══════════════════════════════════════
-   HEADER RESPONSIVE
-   Móvil: logo izq | lang + hamburguesa der
-══════════════════════════════════════ */
-@media (max-width: 1024px) {
-  /* Ocultar nav desktop y social desktop */
-  .main-nav,
-  .social-links { display: none; }
-
-  /* Mostrar hamburguesa */
-  .hamburger { display: flex; }
-
-  /* Mostrar menú móvil */
-  .mobile-nav { display: flex; }
-
-  /* Header: logo a la izquierda, header-right a la derecha */
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* header-right agrupa lang + hamburguesa en fila */
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* Lang switcher: solo bandera, sin texto ni caret */
-  .lang-flag span { display: none; }
-  .lang-caret     { display: none; }
-  .lang-current   { padding: 4px 6px; gap: 4px; }
-
-  /* Logo: mantiene forma completa */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-  }
-  .logo-mark {
-    width: 18px;
-    height: 18px;
-  }
-}
+.mobile-nav-social a:hover { color: #edff00; }
 
 /* ══════════════════════════════════════
    BACK TO TOP
-   Posición encima de chat-fab y wa-fab
+   bottom: 166px = encima de chat (96px) y wa (28px + 58px/2)
 ══════════════════════════════════════ */
 .back-to-top {
   position: fixed;
   bottom: 166px;
   right: 28px;
   z-index: 9998;
+
   width: 46px;
   height: 46px;
   border-radius: 50%;
   border: 2px solid rgba(0,0,0,0.12);
-  background: var(--white);
-  color: var(--black);
+  background: #ffffff;
+  color: #050505;
   cursor: pointer;
+
   display: grid;
   place-items: center;
+
   opacity: 0;
   transform: translateY(12px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease, border-color 0.25s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease,
+              background 0.25s ease, border-color 0.25s ease,
+              box-shadow 0.25s ease;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
-.back-to-top svg { width: 18px; height: 18px; }
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .back-to-top.is-visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
+
 .back-to-top:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(237,255,0,0.35);
+  background: #edff00;
+  border-color: #edff00;
+  box-shadow: 0 8px 24px rgba(237,255,0,0.4);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — activar hamburguesa
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  /* Mostrar hamburguesa */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Mostrar menú móvil (oculto hasta is-open) */
+  .mobile-nav {
+    display: flex;
+  }
+
+  /* header-right: lang | hamburguesa — ambos a la derecha */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Ocultar texto ES/EN en la bandera y el caret */
+  .lang-flag span,
+  .lang-caret {
+    display: none;
+  }
+
+  .lang-current {
+    padding: 5px 8px;
+    gap: 4px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -182,78 +197,9 @@
     width: 42px;
     height: 42px;
   }
-}
 
-/* ══════════════════════════════════════
-   WORK DOTS
-══════════════════════════════════════ */
-.work-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
-  padding: 0 var(--page-padding);
-}
-.work-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.18);
-  transition: background 0.3s ease, width 0.3s ease;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-.work-dot.is-active {
-  background: var(--black);
-  width: 24px;
-  border-radius: 4px;
-}
-
-/* ══════════════════════════════════════
-   NAV ACTIVA
-══════════════════════════════════════ */
-.main-nav a { position: relative; }
-.main-nav a.is-active { opacity: 1; color: #edff00 !important; }
-.main-nav a.is-active::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -8px;
-  width: 100%; height: 2px;
-  background: #edff00;
-  border-radius: 2px;
-  animation: navLine 0.3s cubic-bezier(.19,1,.22,1) forwards;
-}
-@keyframes navLine {
-  from { transform: scaleX(0); transform-origin: left; }
-  to   { transform: scaleX(1); transform-origin: left; }
-}
-.site-header.is-hero .main-nav a.is-active { color: #050505 !important; }
-.site-header.is-hero .main-nav a.is-active::after { background: #050505; }
-
-/* ══════════════════════════════════════
-   VALIDACIÓN FORM
-══════════════════════════════════════ */
-.contact-form input.is-error,
-.contact-form textarea.is-error {
-  border-color: #ff4444 !important;
-  box-shadow: 0 0 0 3px rgba(255,68,68,0.15) !important;
-}
-
-/* ══════════════════════════════════════
-   AJUSTES TEXTO MÓVIL
-══════════════════════════════════════ */
-@media (max-width: 760px) {
-  .hero-eyebrow  { font-size: 11px; letter-spacing: 0.12em; }
-  .stats-eyebrow { font-size: 10px; }
-  .contact-header h2 { font-size: clamp(26px, 7vw, 40px); }
-  .footer-copy   { font-size: 11px; }
-}
-
-/* ══════════════════════════════════════
-   P3 NAV ACTIVA
-══════════════════════════════════════ */
-@supports (color: color(display-p3 0 0 0)) {
-  @media (color-gamut: p3) {
-    .main-nav a.is-active { color: color(display-p3 0.878 0.976 0.082) !important; }
-    .main-nav a.is-active::after { background: color(display-p3 0.878 0.976 0.082); }
+  .back-to-top svg {
+    width: 16px;
+    height: 16px;
   }
 }
