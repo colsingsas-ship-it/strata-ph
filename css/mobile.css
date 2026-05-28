@@ -223,35 +223,44 @@
 ══════════════════════════════════════ */
 @media (max-width: 1024px) {
 
-  /* Mostrar hamburguesa */
+  /* Hamburguesa visible */
   .hamburger { display: flex; }
 
-  /* Activar menú móvil */
+  /* Menú móvil activo */
   .mobile-nav { display: flex; }
 
-  /* Header: flexbox en móvil — más predecible que grid
-     logo queda a la izquierda, header-right a la derecha */
-  .site-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-
-  /* Nav central oculta — ya definida en header.css */
-  .main-nav,
+  /* Ocultar nav y social de desktop */
+  .main-nav    { display: none !important; }
   .social-links { display: none !important; }
 
-  /* header-right: fila con bandera + hamburguesa, todo a la derecha */
+  /* ── HEADER: flexbox puro
+     logo (flex:1) empuja header-right al extremo derecho ── */
+  .site-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Logo crece y empuja todo lo demás a la derecha */
+  .site-header .logo {
+    flex: 1 1 auto !important;
+    justify-self: unset !important;
+  }
+
+  /* header-right: no crece, se queda a la derecha */
   .header-right {
+    flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    margin-left: auto !important;
+    justify-self: unset !important;
+    margin-left: 0 !important;
   }
 
-  /* Solo bandera — sin texto ES/EN ni caret */
-  .lang-flag span,
-  .lang-caret { display: none !important; }
+  /* Solo bandera — sin texto ni caret */
+  .lang-flag span { display: none !important; }
+  .lang-caret     { display: none !important; }
 
   .lang-current {
     padding: 5px 8px !important;
