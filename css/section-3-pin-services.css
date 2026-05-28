@@ -158,29 +158,5 @@
   }
 }
 
-/* =========================
-   DARK MODE — Sección 3 Servicios
-========================= */
-
 /* Números grandes: verde accent */
-[data-theme="dark"] .services-pin-number {
-  color: transparent;
-  font-family: var(--font-number);
-  -webkit-text-stroke: 1px rgba(180, 180, 180, 0.35);
-}
 
-[data-theme="dark"] .services-pin-content h3 {
-  color: #f0f0f0;
-}
-
-[data-theme="dark"] .services-pin-content p {
-  color: rgba(255,255,255,0.6);
-}
-
-[data-theme="dark"] .services-pin-left h2 {
-  color: #f0f0f0;
-}
-
-[data-theme="dark"] .services-pin-left p {
-  color: rgba(255,255,255,0.6);
-}

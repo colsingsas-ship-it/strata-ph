@@ -111,17 +111,6 @@
 }
 
 /* =========================
-   DARK MODE
-========================= */
-
-[data-theme="dark"] .purpose-section    { background: #0d0d0d; }
-[data-theme="dark"] .purpose-image      { background: #111; }
-[data-theme="dark"] .purpose-content h2 { color: #f0f0f0; }
-[data-theme="dark"] .purpose-content > p{ color: rgba(240,240,240,0.65); }
-[data-theme="dark"] .purpose-item p     { color: rgba(240,240,240,0.7); }
-[data-theme="dark"] .purpose-item span  { background: var(--accent); color: #0d0d0d; }
-
-/* =========================
    RESPONSIVE
 ========================= */
 

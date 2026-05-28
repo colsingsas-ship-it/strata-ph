@@ -371,58 +371,16 @@
     transition: none;
   }
 }
-/* =========================
-   DARK MODE — Sección Why Us
-========================= */
 
 /* BANNER: fondo negro profundo siempre visible */
-[data-theme="dark"] .why-banner {
-  background: #0a0a0a;
-}
 
 /* PILLS: sin relleno, borde verde, texto blanco */
-[data-theme="dark"] .why-pills-track span {
-  background: transparent;
-  border: 1px solid var(--accent);
-  color: #ffffff;
-}
 
 /* BANNER TEXTO: "¿POR QUÉ" más delgado, "NOSOTROS?" bold */
-[data-theme="dark"] .why-banner-track span {
-  font-weight: 300;
-  color: #f0f0f0;
-}
-
-[data-theme="dark"] .why-banner-track em {
-  font-weight: 900;
-  color: var(--accent);
-}
 
 /* NÚMEROS del grid: verde accent */
-[data-theme="dark"] .why-icon-row span {
-  color: rgba(180, 180, 180, 0.7);
-  font-family: var(--font-number);
-}
 
 /* Títulos y párrafos del grid */
-[data-theme="dark"] .why-item h3 {
-  color: #f0f0f0;
-}
-
-[data-theme="dark"] .why-item p {
-  color: rgba(255,255,255,0.6);
-}
-
-[data-theme="dark"] .why-line {
-  background: rgba(255,255,255,0.2);
-}
 
 /* Imagen */
-[data-theme="dark"] .why-image {
-  background: #1a1a1a;
-}
 
-/* En dark mode los íconos negros se invierten a blanco */
-[data-theme="dark"] .why-icon-row img {
-  filter: invert(1);
-}
