@@ -293,27 +293,22 @@
     display: none;
   }
 
-  /* Header: 2 columnas — logo izq | controles der */
+  /* ── Cambiar a flexbox: elimina el grid de 3 columnas ── */
   .site-header {
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  /* Logo: izquierda */
-  .logo {
-    justify-self: start;
-    grid-column: 1;
-  }
-
-  /* header-right: ocupa columna 2, pegado a la derecha */
+  /* header-right: fila con bandera + hamburguesa */
   .header-right {
-    grid-column: 2;
-    justify-self: end;
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
-  /* Bandera: solo ícono, sin texto ni caret */
+  /* Bandera: solo ícono */
   .lang-flag span,
   .lang-caret {
     display: none;
