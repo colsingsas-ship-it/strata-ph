@@ -126,22 +126,9 @@
        Ruta sugerida: assets/img/logo/logo-header.svg
 ═══════════════════════════════════════════════ -->
 <header class="site-header is-hero" id="siteHeader">
-  <!--
-    ╔══════════════════════════════════════════════╗
-    ║  LOGO — EDITAR AQUÍ                          ║
-    ║  Opción A (activa): marca geométrica CSS     ║
-    ║    · Cambia el texto editando el <span>      ║
-    ║  Opción B: imagen propia                     ║
-    ║    · Descomenta el <img> y comenta el resto  ║
-    ║    · Ruta: assets/img/logo/logo-header.svg   ║
-    ╚══════════════════════════════════════════════╝
-  -->
   <a href="#home" class="logo">
-    <!-- OPCIÓN A — marca geométrica CSS (activa) -->
     <span class="logo-mark"></span>
     <span>STRATA PH</span>
-    <!-- OPCIÓN B — imagen
-    <img src="assets/img/logo/logo-header.svg" alt="STRATA PH" class="logo-img" /> -->
   </a>
 
   <nav class="main-nav" aria-label="Navegación principal">
@@ -1874,27 +1861,5 @@
 })();
 </script>
 
-
-<style id="header-mobile-fix">
-@media (max-width: 1024px) {
-  .site-header {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    grid-template-columns: none !important;
-  }
-  .main-nav, .social-links { display: none !important; }
-  .logo { flex: 0 0 auto !important; }
-  .header-right {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  .lang-flag span, .lang-caret { display: none !important; }
-  .lang-current { padding: 5px 8px !important; }
-}
-</style>
 </body>
 </html>
