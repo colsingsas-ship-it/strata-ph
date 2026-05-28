@@ -222,50 +222,11 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 1024px) {
-
-  /* Hamburguesa visible */
+  /* Mostrar hamburguesa */
   .hamburger { display: flex; }
 
-  /* Menú móvil activo */
+  /* Activar menú móvil */
   .mobile-nav { display: flex; }
-
-  /* Ocultar nav y social de desktop */
-  .main-nav    { display: none !important; }
-  .social-links { display: none !important; }
-
-  /* ── HEADER: flexbox puro
-     logo (flex:1) empuja header-right al extremo derecho ── */
-  .site-header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-  }
-
-  /* Logo crece y empuja todo lo demás a la derecha */
-  .site-header .logo {
-    flex: 1 1 auto !important;
-    justify-self: unset !important;
-  }
-
-  /* header-right: no crece, se queda a la derecha */
-  .header-right {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    justify-self: unset !important;
-    margin-left: 0 !important;
-  }
-
-  /* Solo bandera — sin texto ni caret */
-  .lang-flag span { display: none !important; }
-  .lang-caret     { display: none !important; }
-
-  .lang-current {
-    padding: 5px 8px !important;
-    gap: 4px !important;
-  }
 }
 
 /* Why image: más espacio encima en móvil (después del banner/pills) */
