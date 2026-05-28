@@ -229,7 +229,15 @@
   /* Activar menú móvil */
   .mobile-nav { display: flex; }
 
-  /* Header: logo izq | lang+hamburguesa der */
+  /* Header: colapsar a 2 columnas — logo izq | header-right der */
+  .site-header {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  /* Nav central desaparece del grid */
+  .main-nav { display: none; }
+
+  /* header-right: lang + hamburguesa pegados a la derecha */
   .header-right {
     display: flex;
     align-items: center;
