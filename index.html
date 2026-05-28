@@ -35,8 +35,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  
+  <!-- Favicon — data URI: funciona sin archivos externos -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050505'/><polygon points='6,6 16,6 6,16' fill='%23ffffff'/><polygon points='26,26 16,26 26,16' fill='%23edff00'/></svg>" type="image/svg+xml" />
   <!-- Fallback PNG para navegadores sin soporte SVG -->
-  <link rel="icon" href="assets/img/favicon-claro.png" type="image/png" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
     
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -226,28 +229,29 @@
     <span>STRATA PH</span>
   </a>
   <div class="mobile-header-right">
-    <div class="lang-switcher" id="langSwitcherMobile">
-      <button class="lang-current" id="langCurrentMobile">
+    <div class="lang-switcher lang-switcher-mobile" id="langSwitcherMobile">
+      <button class="lang-current" id="langCurrentMobile" aria-haspopup="true" aria-expanded="false">
         <span class="lang-flag" data-lang="es">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
-            <rect width="60" height="40" fill="#FCD116"/>
-            <rect y="20" width="60" height="10" fill="#003893"/>
-            <rect y="30" width="60" height="10" fill="#CE1126"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40"><rect width="60" height="40" fill="#FCD116"/><rect y="20" width="60" height="10" fill="#003893"/><rect y="30" width="60" height="10" fill="#CE1126"/></svg>
         </span>
         <span class="lang-flag" data-lang="en" style="display:none">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
-            <rect width="60" height="40" fill="#B22234"/>
-            <rect y="3.07" width="60" height="3.08" fill="#fff"/>
-            <rect y="9.23" width="60" height="3.08" fill="#fff"/>
-            <rect y="15.38" width="60" height="3.08" fill="#fff"/>
-            <rect y="21.54" width="60" height="3.08" fill="#fff"/>
-            <rect y="27.69" width="60" height="3.08" fill="#fff"/>
-            <rect y="33.85" width="60" height="3.08" fill="#fff"/>
-            <rect width="24" height="21.54" fill="#3C3B6E"/>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40"><rect width="60" height="40" fill="#B22234"/><rect y="3.07" width="60" height="3.08" fill="#fff"/><rect y="9.23" width="60" height="3.08" fill="#fff"/><rect y="15.38" width="60" height="3.08" fill="#fff"/><rect y="21.54" width="60" height="3.08" fill="#fff"/><rect y="27.69" width="60" height="3.08" fill="#fff"/><rect y="33.85" width="60" height="3.08" fill="#fff"/><rect width="24" height="21.54" fill="#3C3B6E"/></svg>
         </span>
       </button>
+      <ul class="lang-dropdown lang-dropdown-mobile" id="langDropdownMobile" role="listbox">
+        <li>
+          <button class="lang-option is-active" data-lang="es" role="option" aria-selected="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40"><rect width="60" height="40" fill="#FCD116"/><rect y="20" width="60" height="10" fill="#003893"/><rect y="30" width="60" height="10" fill="#CE1126"/></svg>
+            Español
+          </button>
+        </li>
+        <li>
+          <button class="lang-option" data-lang="en" role="option" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40"><rect width="60" height="40" fill="#B22234"/><rect y="3.07" width="60" height="3.08" fill="#fff"/><rect y="9.23" width="60" height="3.08" fill="#fff"/><rect y="15.38" width="60" height="3.08" fill="#fff"/><rect y="21.54" width="60" height="3.08" fill="#fff"/><rect y="27.69" width="60" height="3.08" fill="#fff"/><rect y="33.85" width="60" height="3.08" fill="#fff"/><rect width="24" height="21.54" fill="#3C3B6E"/></svg>
+            English
+          </button>
+        </li>
+      </ul>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
       <span></span>
@@ -1121,25 +1125,29 @@
 
   if (!fab || !panel) return;
 
-  fab.addEventListener('click', () => {
+  fab.addEventListener('click', (e) => {
+    e.stopPropagation();
     const open = panel.classList.toggle('is-open');
     fab.classList.toggle('is-active', open);
     fab.setAttribute('aria-expanded', open);
-    if (open) panel.querySelector('input').focus();
+    if (open) setTimeout(() => panel.querySelector('input').focus(), 50);
   });
 
-  close.addEventListener('click', () => {
+  panel.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+
+  close.addEventListener('click', (e) => {
+    e.stopPropagation();
     panel.classList.remove('is-open');
     fab.classList.remove('is-active');
     fab.setAttribute('aria-expanded', false);
   });
 
   // Cerrar al hacer clic fuera
-  document.addEventListener('click', (e) => {
-    if (!panel.contains(e.target) && e.target !== fab) {
-      panel.classList.remove('is-open');
-      fab.classList.remove('is-active');
-    }
+  document.addEventListener('click', () => {
+    panel.classList.remove('is-open');
+    fab.classList.remove('is-active');
   });
 
   // Envío del formulario
