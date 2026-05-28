@@ -330,3 +330,52 @@
   }
 }
 
+
+/* =========================
+   MOBILE HEADER FIX — FINAL
+   El header tiene 3 hijos en grid: logo | nav | header-right
+   En móvil la nav se oculta pero el grid sigue reservando
+   su columna. Solución: grid de 2 columnas y nav fuera del flujo.
+========================= */
+@media (max-width: 1024px) {
+  .site-header {
+    grid-template-columns: 1fr auto !important;
+    grid-template-areas: "logo controls" !important;
+  }
+
+  .logo {
+    grid-area: logo !important;
+  }
+
+  .main-nav {
+    display: none !important;
+    grid-area: unset !important;
+  }
+
+  .social-links {
+    display: none !important;
+  }
+
+  .header-right {
+    grid-area: controls !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    justify-self: end !important;
+  }
+
+  .lang-flag span,
+  .lang-caret {
+    display: none !important;
+  }
+
+  .lang-current {
+    padding: 5px 8px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    padding: 0 20px !important;
+  }
+}
