@@ -247,3 +247,101 @@
     height: 16px;
   }
 }
+
+/* ══════════════════════════════════════
+   HEADER MÓVIL INDEPENDIENTE
+   Completamente separado del header desktop
+══════════════════════════════════════ */
+
+/* Por defecto: header móvil oculto */
+.site-header-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  /* Ocultar header desktop */
+  .site-header {
+    display: none !important;
+  }
+
+  /* Mostrar header móvil */
+  .site-header-mobile {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--header-height);
+    z-index: 9999;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: #050505;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+    transition: background-color 0.35s ease;
+  }
+
+  .site-header-mobile.is-hero {
+    background: transparent;
+    color: #050505;
+  }
+
+  .site-header-mobile.is-scrolled {
+    background: #050505;
+    color: #ffffff;
+  }
+
+  /* Logo izquierda */
+  .site-header-mobile .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+    font-family: "Sora", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .site-header-mobile .logo-mark {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background:
+      linear-gradient(45deg,  currentColor 0 45%, transparent 45%),
+      linear-gradient(-45deg, #edff00 0 45%, transparent 45%);
+  }
+
+  /* Controles derecha: bandera + hamburguesa */
+  .mobile-header-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Bandera */
+  .site-header-mobile .lang-current {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 6px;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .site-header-mobile.is-hero .lang-current {
+    border-color: rgba(0,0,0,0.25);
+  }
+
+  .site-header-mobile .lang-flag svg {
+    width: 22px;
+    height: 15px;
+    border-radius: 2px;
+    display: block;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.14);
+  }
+}
