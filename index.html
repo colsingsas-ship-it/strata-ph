@@ -35,8 +35,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  
+  <!-- Favicon — data URI: funciona sin archivos externos -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050505'/><polygon points='6,6 16,6 6,16' fill='%23ffffff'/><polygon points='26,26 16,26 26,16' fill='%23edff00'/></svg>" type="image/svg+xml" />
   <!-- Fallback PNG para navegadores sin soporte SVG -->
-  <link rel="icon" href="assets/img/favicon-claro.png" type="image/png" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
     
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -881,7 +884,7 @@
       </h2>
     </div>
 
-    <form class="contact-form reveal-fade-up" action="#" method="post">
+    <form class="contact-form reveal-fade-up" id="contactForm" action="https://formspree.io/f/xlgvvaqv" method="POST">
       <div class="form-grid">
         <label>
           Nombre del Representante *
@@ -1047,13 +1050,21 @@
   </div>
 
   <!-- Formulario de captura -->
-  <form class="chat-form" id="chatForm" action="#" method="post">
+  <form class="chat-form" id="chatForm" action="https://formspree.io/f/xykvvlra" method="POST">
+    <input type="hidden" name="_subject" value="Nuevo mensaje - Chat STRATA PH" />
     <input
       type="text"
       name="chat_name"
       placeholder="Su nombre completo *"
       required
       autocomplete="name"
+    />
+    <input
+      type="email"
+      name="chat_email"
+      placeholder="Correo electrónico *"
+      required
+      autocomplete="email"
     />
     <input
       type="tel"
@@ -1103,6 +1114,24 @@
     <path d="M16 2C8.27 2 2 8.27 2 16c0 2.44.65 4.73 1.78 6.72L2 30l7.48-1.75A13.93 13.93 0 0 0 16 30c7.73 0 14-6.27 14-14S23.73 2 16 2zm0 25.5c-2.18 0-4.22-.6-5.97-1.64l-.43-.26-4.44 1.04 1.06-4.32-.28-.45A11.45 11.45 0 0 1 4.5 16C4.5 9.6 9.6 4.5 16 4.5S27.5 9.6 27.5 16 22.4 27.5 16 27.5zm6.3-8.56c-.34-.17-2.03-1-2.34-1.12-.32-.11-.55-.17-.78.17-.23.34-.9 1.12-1.1 1.35-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69-1.01-.9-1.7-2.02-1.9-2.36-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.78-1.88-1.07-2.57-.28-.68-.57-.59-.78-.6h-.66c-.23 0-.6.09-.91.43-.31.34-1.19 1.16-1.19 2.84s1.22 3.3 1.39 3.52c.17.23 2.4 3.66 5.81 5.14.81.35 1.44.56 1.93.72.81.26 1.55.22 2.13.13.65-.1 2.03-.83 2.32-1.63.29-.8.29-1.48.2-1.63-.09-.14-.32-.23-.66-.4z"/>
   </svg>
 </a>
+
+
+<!-- POPUP CONFIRMACIÓN FORMULARIO PRINCIPAL -->
+<div class="form-popup-overlay" id="formPopupOverlay" aria-hidden="true">
+  <div class="form-popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="form-popup-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    </div>
+    <h3 id="popupTitle">¡Solicitud enviada!</h3>
+    <p>Hemos recibido su información. Un asesor de STRATA PH le contactará en menos de 24 horas.</p>
+    <button class="form-popup-close btn-primary" id="formPopupClose">
+      Entendido
+    </button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 <script src="js/section-3-pin-services.js"></script>
@@ -1167,18 +1196,42 @@
     fab.classList.remove('is-active');
   });
 
-  // Envío del formulario
+  // Envío del formulario chat via Formspree
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Aquí puedes añadir fetch() a tu endpoint real
-    form.hidden = true;
-    success.hidden = false;
-    // Cierra el panel tras 3 segundos
-    setTimeout(() => {
-      panel.classList.remove('is-open');
-      fab.classList.remove('is-active');
-      setTimeout(() => { form.hidden = false; success.hidden = true; form.reset(); }, 500);
-    }, 3000);
+    const btn = form.querySelector('.chat-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(res => {
+      if (res.ok) {
+        form.hidden = true;
+        if (success) success.hidden = false;
+        setTimeout(() => {
+          panel.classList.remove('is-open');
+          fab.classList.remove('is-active');
+          setTimeout(() => {
+            form.hidden = false;
+            if (success) success.hidden = true;
+            form.reset();
+            btn.textContent = 'Solicitar que me contacten';
+            btn.disabled = false;
+          }, 500);
+        }, 3000);
+      } else {
+        btn.textContent = 'Error — intente de nuevo';
+        btn.disabled = false;
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Error — intente de nuevo';
+      btn.disabled = false;
+    });
   });
 })();
 </script>
