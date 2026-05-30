@@ -121,6 +121,14 @@
   animation: spinClockwise 10s linear infinite;
 }
 
+.rotating-svg {
+  position: absolute;
+  inset: 0;
+  width: 140px;
+  height: 140px;
+  animation: spinClockwise 10s linear infinite;
+}
+
 .rotating-svg text {
   fill: var(--black);
   font-size: 10.5px;
@@ -129,12 +137,14 @@
   text-transform: uppercase;
 }
 
+/* La flecha gira en la misma dirección pero más despacio */
 .badge-arrow-img {
   position: relative;
   z-index: 2;
   width: 48px;
   height: 48px;
   object-fit: contain;
+  animation: spinClockwise 18s linear infinite;
 }
 
 @keyframes spinClockwise {
@@ -228,14 +238,61 @@
   }
 
   .rotating-badge {
-    display: none;
+    display: grid;
+    right: 16px;
+    bottom: -48px;
+    width: 110px;
+    height: 110px;
+  }
+
+  .rotating-svg {
+    width: 110px;
+    height: 110px;
+  }
+
+  .badge-arrow-img {
+    width: 38px;
+    height: 38px;
   }
 }
+/* =========================
+   DARK MODE — Sección About
+========================= */
 
 /* El bloque de texto al lado de la imagen:
    fondo blanco forzado, texto oscuro */
+[data-theme="dark"] .about-text {
+  background: #f5f5f5;
+}
+
+[data-theme="dark"] .about-text h2 {
+  color: #050505;
+}
+
+[data-theme="dark"] .about-text p {
+  color: #4a4a4a;
+}
+
+[data-theme="dark"] .about-text strong {
+  color: #050505;
+}
 
 /* Botón dentro del bloque de texto: texto negro */
+[data-theme="dark"] .about-text .btn-primary {
+  color: #0d0d0d;
+}
 
 /* Números fantasma en about-bottom: verde accent */
+[data-theme="dark"] .bottom-number {
+  color: transparent;
+  font-family: var(--font-number);
+  -webkit-text-stroke: 1px rgba(180, 180, 180, 0.35);
+}
 
+[data-theme="dark"] .bottom-item h5 {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .bottom-item p {
+  color: rgba(255,255,255,0.6);
+}

@@ -377,3 +377,75 @@
 .lang-switcher-mobile {
   position: relative;
 }
+
+/* ══════════════════════════════════════
+   HEADER MÓVIL — estado con menú abierto
+   Fondo negro sólido para que la X sea visible
+══════════════════════════════════════ */
+.site-header-mobile.menu-open {
+  background: #050505 !important;
+  color: #ffffff !important;
+}
+
+.site-header-mobile.menu-open .logo {
+  color: #ffffff !important;
+}
+
+.site-header-mobile.menu-open .lang-current {
+  border-color: rgba(255,255,255,0.28) !important;
+  color: #ffffff !important;
+}
+
+/* ══════════════════════════════════════
+   ANIMACIONES MÓVIL — más rápidas y ligeras
+   En móvil simplificamos los efectos para
+   que no se perciban lentos en hardware limitado
+══════════════════════════════════════ */
+@media (max-width: 760px) {
+
+  /* Reducir distancia de entrada — menos recorrido = más rápido */
+  .js .reveal-up {
+    translate: 0 40px !important;
+    transition-duration: 0.6s !important;
+  }
+
+  .js .reveal-zoom img {
+    transform: scale(1.08) !important;
+    transition-duration: 0.8s !important;
+  }
+
+  .js .reveal-left {
+    transform: translateX(-40px) !important;
+    transition-duration: 0.6s !important;
+  }
+
+  /* Curtain más rápido en móvil */
+  .js .reveal-curtain-left img:first-child {
+    transition:
+      clip-path 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.15s !important,
+      transform  1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s !important;
+  }
+
+  /* Why items más rápidos */
+  .js .why-item > * {
+    transition-duration: 0.5s !important;
+  }
+
+  /* Video hero — fallback por si no carga */
+  .hero-video {
+    display: none;
+  }
+
+  .hero-bg {
+    background-image: url('assets/img/hero/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-bg::after {
+    background: linear-gradient(
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.1)
+    );
+  }
+}
