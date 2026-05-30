@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Fallback PNG para navegadores sin soporte SVG -->
+  
   <link rel="icon" href="assets/img/favicon-claro.png" type="image/png" />
     
   <link rel="stylesheet" href="css/base.css" />
@@ -997,14 +997,6 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════
-     BOTÓN CHAT — CAPTURA DE DATOS
-     Abre un mini-formulario flotante para que el
-     usuario deje su nombre y teléfono.
-     El formulario envía a la misma acción del form
-     principal (action="#") — cámbiala por tu endpoint.
-═══════════════════════════════════════════════ -->
-
 <!-- Back to top — encima de chat y whatsapp -->
 <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1080,14 +1072,7 @@
     </button>
   </form>
 
-  <!-- Estado de éxito (se muestra tras envío) -->
-  <div class="chat-success" id="chatSuccess" hidden>
-    <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-      <polyline points="22 4 12 14.01 9 11.01"/>
-    </svg>
-    <p>¡Recibido! Un asesor le contactará pronto.</p>
-  </div>
+  <!-- Estado de éxito — se gestiona via popup global -->
 
 </div>
 
@@ -1207,19 +1192,22 @@
     })
     .then(res => {
       if (res.ok) {
-        form.hidden = true;
-        if (success) success.hidden = false;
-        setTimeout(() => {
-          panel.classList.remove('is-open');
-          fab.classList.remove('is-active');
-          setTimeout(() => {
-            form.hidden = false;
-            if (success) success.hidden = true;
-            form.reset();
-            btn.textContent = 'Solicitar que me contacten';
-            btn.disabled = false;
-          }, 500);
-        }, 3000);
+        // Cierra el panel
+        panel.classList.remove('is-open');
+        fab.classList.remove('is-active');
+        form.reset();
+        btn.textContent = 'Solicitar que me contacten';
+        btn.disabled = false;
+        // Muestra popup global con mensaje para chat
+        const popupTitle = document.getElementById('popupTitle');
+        const popupMsg   = document.querySelector('.form-popup p');
+        if (popupTitle) popupTitle.textContent = '¡Mensaje enviado!';
+        if (popupMsg)   popupMsg.textContent   = 'Hemos recibido su solicitud. Un asesor de STRATA PH le contactará en menos de 2 horas.';
+        const overlay = document.getElementById('formPopupOverlay');
+        if (overlay) {
+          overlay.classList.add('is-open');
+          overlay.removeAttribute('aria-hidden');
+        }
       } else {
         btn.textContent = 'Error — intente de nuevo';
         btn.disabled = false;
