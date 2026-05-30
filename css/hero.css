@@ -33,19 +33,16 @@
   overflow: hidden;
 }
 
-/* Overlay encima del video — protege el texto */
+/* Overlay encima del video */
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.72) 0%,
-      rgba(255, 255, 255, 0.85) 40%,
-      rgba(255, 255, 255, 0.72) 100%
-    );
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.40),
+    rgba(255, 255, 255, 0.0)
+  );
   pointer-events: none;
 }
 
@@ -75,26 +72,12 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-
-  /* Fondo pill para aislar el texto del video */
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 10px 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* TITULO */
 .hero-content h1 {
   font-size: clamp(48px, 7vw, 112px);
   line-height: 0.95;
-
-  /* Sombra difusa que separa el texto del video */
-  text-shadow:
-    0 2px 40px rgba(255,255,255,0.9),
-    0 0px 80px rgba(255,255,255,0.7);
   font-weight: 900;
   letter-spacing: -0.07em;
 }
@@ -109,30 +92,10 @@
 
   .hero-content h1 {
     font-size: clamp(42px, 14vw, 68px);
-    /* text-shadow más suave — suficiente contraste sin coste de render */
-    text-shadow: 0 2px 24px rgba(255,255,255,1);
   }
 
   .hero-content .btn-primary {
     margin-top: 48px;
-  }
-
-  /* Overlay más denso en móvil */
-  .hero-bg::after {
-    background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.80) 0%,
-      rgba(255,255,255,0.90) 40%,
-      rgba(255,255,255,0.80) 100%
-    );
-  }
-
-  /* Pill eyebrow: sin backdrop-filter en móvil (pesado en hardware limitado) */
-  .hero-eyebrow {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding: 8px 18px;
   }
 
 }
