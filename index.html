@@ -1115,6 +1115,178 @@
   </div>
 </div>
 
+<script>
+/* ═══════════════════════════════════════════
+   FORMULARIOS — contacto + chat
+   Ambos usan fetch a Formspree.
+   Nunca redirigen. Popup compartido.
+═══════════════════════════════════════════ */
+(function () {
+
+  /* ── POPUP ─────────────────────────────── */
+  var overlay  = document.getElementById('formPopupOverlay');
+  var closeBtn = document.getElementById('formPopupClose');
+  var popTitle = document.getElementById('popupTitle');
+  var popMsg   = overlay ? overlay.querySelector('p') : null;
+
+  function openPopup(title, msg) {
+    if (!overlay) return;
+    if (popTitle) popTitle.textContent = title;
+    if (popMsg)   popMsg.textContent   = msg;
+    overlay.classList.add('is-open');
+    overlay.removeAttribute('aria-hidden');
+    setTimeout(function () { closeBtn && closeBtn.focus(); }, 50);
+  }
+
+  function closePopup() {
+    if (!overlay) return;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closePopup);
+  if (overlay)  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  /* ── FORMULARIO CONTACTO ────────────────── */
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    var reqInputs = contactForm.querySelectorAll('input[required], textarea[required]');
+    reqInputs.forEach(function (inp) {
+      inp.addEventListener('blur', function () {
+        inp.classList.toggle('is-error', !inp.validity.valid);
+      });
+      inp.addEventListener('input', function () {
+        if (inp.validity.valid) inp.classList.remove('is-error');
+      });
+    });
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var valid = true;
+      reqInputs.forEach(function (inp) {
+        if (!inp.validity.valid) {
+          inp.classList.add('is-error');
+          if (valid) { inp.focus(); valid = false; }
+        }
+      });
+      if (!valid) return;
+
+      var btn = contactForm.querySelector('.form-button');
+      var orig = btn.textContent;
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      var fd = new FormData(contactForm);
+      fd.append('_subject', 'Nueva solicitud - Formulario STRATA PH');
+
+      fetch('https://formspree.io/f/xlgvvaqv', {
+        method: 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        btn.disabled = false;
+        btn.textContent = orig;
+        if (res.ok) {
+          contactForm.reset();
+          openPopup(
+            '¡Solicitud enviada!',
+            'Hemos recibido su información. Un asesor de STRATA PH le contactará en menos de 24 horas.'
+          );
+        } else {
+          btn.textContent = 'Error — intente de nuevo';
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Error — intente de nuevo';
+      });
+    });
+  }
+
+  /* ── CHAT FAB ───────────────────────────── */
+  var fab   = document.getElementById('chatFab');
+  var panel = document.getElementById('chatPanel');
+  var closePanelBtn = document.getElementById('chatClose');
+  var chatForm = document.getElementById('chatForm');
+
+  if (fab && panel) {
+    fab.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = panel.classList.toggle('is-open');
+      fab.classList.toggle('is-active', open);
+      fab.setAttribute('aria-expanded', open);
+      if (open) setTimeout(function () {
+        var first = panel.querySelector('input');
+        if (first) first.focus();
+      }, 50);
+    });
+
+    panel.addEventListener('click', function (e) { e.stopPropagation(); });
+
+    if (closePanelBtn) {
+      closePanelBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        panel.classList.remove('is-open');
+        fab.classList.remove('is-active');
+      });
+    }
+
+    document.addEventListener('click', function () {
+      panel.classList.remove('is-open');
+      fab.classList.remove('is-active');
+    });
+  }
+
+  if (chatForm) {
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var btn = chatForm.querySelector('.chat-submit');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      var fd2 = new FormData(chatForm);
+      fd2.append('_subject', 'Nuevo mensaje - Chat STRATA PH');
+
+      fetch('https://formspree.io/f/xykvvlra', {
+        method: 'POST',
+        body: fd2,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        btn.disabled = false;
+        btn.textContent = 'Solicitar que me contacten';
+        if (res.ok) {
+          chatForm.reset();
+          if (panel) panel.classList.remove('is-open');
+          if (fab)   fab.classList.remove('is-active');
+          openPopup(
+            '¡Mensaje enviado!',
+            'Hemos recibido su mensaje. Un asesor de STRATA PH le contactará en menos de 2 horas.'
+          );
+        } else {
+          btn.textContent = 'Error — intente de nuevo';
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Error — intente de nuevo';
+      });
+    });
+  }
+
+})();
+</script>
+
 <script src="js/main.js"></script>
 <script src="js/section-3-pin-services.js"></script>
 <script src="js/mobile.js"></script>
@@ -1140,87 +1312,7 @@
 })();
 </script>
 
-<!-- ═══════════════════════════════════════════════
-     CHAT FAB — lógica del panel flotante
-═══════════════════════════════════════════════ -->
-<script>
-(function () {
-  const fab     = document.getElementById('chatFab');
-  const panel   = document.getElementById('chatPanel');
-  const close   = document.getElementById('chatClose');
-  const form    = document.getElementById('chatForm');
-  const success = document.getElementById('chatSuccess');
 
-  if (!fab || !panel) return;
-
-  fab.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = panel.classList.toggle('is-open');
-    fab.classList.toggle('is-active', open);
-    fab.setAttribute('aria-expanded', open);
-    if (open) setTimeout(() => panel.querySelector('input').focus(), 50);
-  });
-
-  panel.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-
-  close.addEventListener('click', (e) => {
-    e.stopPropagation();
-    panel.classList.remove('is-open');
-    fab.classList.remove('is-active');
-    fab.setAttribute('aria-expanded', false);
-  });
-
-  // Cerrar al hacer clic fuera
-  document.addEventListener('click', () => {
-    panel.classList.remove('is-open');
-    fab.classList.remove('is-active');
-  });
-
-  // Envío del formulario chat via Formspree
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.chat-submit');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    const fd2 = new FormData(form);
-    fd2.append('_subject', 'Nuevo mensaje - Chat STRATA PH');
-    fetch('https://formspree.io/f/xykvvlra', {
-      method: 'POST',
-      body: fd2,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(res => {
-      btn.disabled = false;
-      btn.textContent = 'Solicitar que me contacten';
-      if (res.ok) {
-        panel.classList.remove('is-open');
-        fab.classList.remove('is-active');
-        form.reset();
-        // Popup con mensaje específico del chat
-        const popupTitle = document.getElementById('popupTitle');
-        const popupMsg   = document.querySelector('.form-popup p');
-        if (popupTitle) popupTitle.textContent = '¡Mensaje enviado!';
-        if (popupMsg)   popupMsg.textContent   = 'Hemos recibido su solicitud. Un asesor de STRATA PH le contactará en menos de 2 horas.';
-        const overlay = document.getElementById('formPopupOverlay');
-        if (overlay) {
-          overlay.classList.add('is-open');
-          overlay.removeAttribute('aria-hidden');
-          document.getElementById('formPopupClose')?.focus();
-        }
-      } else {
-        btn.textContent = 'Error — intente de nuevo';
-      }
-    })
-    .catch(() => {
-      btn.textContent = 'Error — intente de nuevo';
-      btn.disabled = false;
-    });
-  });
-})();
-</script>
 
 <!-- ═══════════════════════════════════════════════
      SISTEMA DE TRADUCCIÓN
