@@ -35,8 +35,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
+  
+  <!-- Favicon — data URI: funciona sin archivos externos -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050505'/><polygon points='6,6 16,6 6,16' fill='%23ffffff'/><polygon points='26,26 16,26 26,16' fill='%23edff00'/></svg>" type="image/svg+xml" />
   <!-- Fallback PNG para navegadores sin soporte SVG -->
-  <link rel="icon" href="assets/img/favicon-claro.png" type="image/png" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
     
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -819,7 +822,6 @@
 <section class="purpose-section" id="section-5">
   <div class="purpose-image reveal-curtain-left">
     <img loading="lazy" src="assets/img/section-5/purpose-bg.jpg" alt="Administración profesional de propiedad horizontal" />
-    <img loading="lazy" class="purpose-mark" src="assets/img/icons/hazel-mark.svg" alt="" />
   </div>
 
   <div class="purpose-content">
@@ -1108,6 +1110,27 @@
 <script src="js/main.js"></script>
 <script src="js/section-3-pin-services.js"></script>
 <script src="js/mobile.js"></script>
+<script>
+/* Forzar reproducción del video en móvil */
+(function () {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+  video.muted = true;
+  video.playsInline = true;
+  const tryPlay = function () {
+    video.play().catch(function () {
+      /* Si falla, el poster queda visible — aceptable */
+    });
+  };
+  if (document.readyState === 'complete') {
+    tryPlay();
+  } else {
+    window.addEventListener('load', tryPlay);
+  }
+  /* Segundo intento al primer toque del usuario */
+  document.addEventListener('touchstart', tryPlay, { once: true });
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════════
      CHAT FAB — lógica del panel flotante
