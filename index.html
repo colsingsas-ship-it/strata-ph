@@ -881,7 +881,7 @@
       </h2>
     </div>
 
-    <form class="contact-form reveal-fade-up" id="contactForm" action="https://formspree.io/f/xlgvvaqv" method="POST">
+    <form class="contact-form reveal-fade-up" id="contactForm" novalidate>
       <div class="form-grid">
         <label>
           Nombre del Representante *
@@ -1039,7 +1039,7 @@
   </div>
 
   <!-- Formulario de captura -->
-  <form class="chat-form" id="chatForm" action="https://formspree.io/f/xykvvlra" method="POST">
+  <form class="chat-form" id="chatForm" novalidate>
     <input type="hidden" name="_subject" value="Nuevo mensaje - Chat STRATA PH" />
     <input
       type="text"
@@ -1185,20 +1185,21 @@
     btn.textContent = 'Enviando...';
     btn.disabled = true;
 
-    fetch(form.action, {
+    const fd2 = new FormData(form);
+    fd2.append('_subject', 'Nuevo mensaje - Chat STRATA PH');
+    fetch('https://formspree.io/f/xykvvlra', {
       method: 'POST',
-      body: new FormData(form),
+      body: fd2,
       headers: { 'Accept': 'application/json' }
     })
     .then(res => {
+      btn.disabled = false;
+      btn.textContent = 'Solicitar que me contacten';
       if (res.ok) {
-        // Cierra el panel
         panel.classList.remove('is-open');
         fab.classList.remove('is-active');
         form.reset();
-        btn.textContent = 'Solicitar que me contacten';
-        btn.disabled = false;
-        // Muestra popup global con mensaje para chat
+        // Popup con mensaje específico del chat
         const popupTitle = document.getElementById('popupTitle');
         const popupMsg   = document.querySelector('.form-popup p');
         if (popupTitle) popupTitle.textContent = '¡Mensaje enviado!';
@@ -1207,10 +1208,10 @@
         if (overlay) {
           overlay.classList.add('is-open');
           overlay.removeAttribute('aria-hidden');
+          document.getElementById('formPopupClose')?.focus();
         }
       } else {
         btn.textContent = 'Error — intente de nuevo';
-        btn.disabled = false;
       }
     })
     .catch(() => {
