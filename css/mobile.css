@@ -437,3 +437,109 @@
     display: block;
   }
 }
+
+/* ══════════════════════════════════════
+   POPUP CONFIRMACIÓN FORMULARIO
+   Estilo coherente con la web
+══════════════════════════════════════ */
+.form-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  display: none;  /* oculto por defecto — no ocupa espacio ni es visible */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-popup-overlay.is-open {
+  display: flex;  /* visible al abrirse */
+  opacity: 1;
+  pointer-events: all;
+  animation: popupFadeIn 0.3s ease forwards;
+}
+
+@keyframes popupFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.form-popup {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: clamp(36px, 6vw, 60px) clamp(32px, 5vw, 56px);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.28);
+
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(.19,1,.22,1);
+}
+
+.form-popup-overlay.is-open .form-popup {
+  transform: translateY(0) scale(1);
+}
+
+/* Ícono check */
+.form-popup-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--black);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 28px;
+}
+
+.form-popup-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.form-popup h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.form-popup p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+.form-popup-close {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+@media (max-width: 760px) {
+  .form-popup {
+    padding: 36px 28px;
+  }
+
+  .form-popup-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .form-popup-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+}
