@@ -431,21 +431,9 @@
     transition-duration: 0.5s !important;
   }
 
-  /* Video hero — fallback por si no carga */
+  /* Video hero: siempre visible en móvil
+     El poster se muestra mientras carga */
   .hero-video {
-    display: none;
-  }
-
-  .hero-bg {
-    background-image: url('assets/img/hero/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-
-  .hero-bg::after {
-    background: linear-gradient(
-      rgba(255,255,255,0.55),
-      rgba(255,255,255,0.1)
-    );
+    display: block;
   }
 }
